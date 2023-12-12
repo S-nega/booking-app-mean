@@ -300,6 +300,7 @@
 .toolbar{
     margin: 0;
     height: 120px;
+    width: auto;
     padding: 0 15%;
     display: flex;
     flex-wrap: wrap;
@@ -324,6 +325,7 @@
     height: 60px;
     display: flex;
     align-items: center;
+    padding: 0 10px;
 }
 
 
