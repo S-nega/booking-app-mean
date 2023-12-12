@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ApiService } from '../service/api.service';
 
 @Component({
   selector: 'app-housing',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./housing.component.css']
 })
 export class HousingComponent {
-
+  constructor(private apiService: ApiService) { }
+  ngOnInit() {
+    this.apiService.houseFunc().subscribe((data: any) => {
+    });
+}
 }

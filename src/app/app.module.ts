@@ -6,6 +6,8 @@ import { HousingComponent } from './housing/housing.component';
 import { CarRentalComponent } from './car-rental/car-rental.component';
 import { AirTicketsComponent } from './air-tickets/air-tickets.component';
 import { AppRoutingModule } from './app-routing.module';
+import { ApiService } from './service/api.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,8 +19,11 @@ import { AppRoutingModule } from './app-routing.module';
   imports: [
     BrowserModule,
     AppRoutingModule, //Добавление AppRoutingModule для роутов
+    HttpClientModule, // Добавление HttpClientModule в список импортируемых модулей
   ],
-  providers: [],
+  providers: [
+    ApiService //Добавление ApiService
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
