@@ -5,18 +5,25 @@ import { AppComponent } from './app.component';
 import { HousingComponent } from './housing/housing.component';
 import { CarRentalComponent } from './car-rental/car-rental.component';
 import { AirTicketsComponent } from './air-tickets/air-tickets.component';
+import { AppRoutingModule } from './app-routing.module';
+import { ApiService } from './service/api.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     HousingComponent,
     CarRentalComponent,
-    AirTicketsComponent
+    AirTicketsComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule, //Добавление AppRoutingModule для роутов
+    HttpClientModule, // Добавление HttpClientModule в список импортируемых модулей
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    ApiService //Добавление ApiService
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
