@@ -338,4 +338,6 @@
 
 footer{
     padding:50px 15%;
+    position: fixed;
+    bottom: 0;
 }
