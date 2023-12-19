@@ -7,6 +7,9 @@ import { HttpClient } from '@angular/common/http';
 export class ApiService {
   private apiUrl = 'http://localhost:8080'
   constructor(private http: HttpClient) { }
+  // houseFunc() {
+  //   return this.http.get(`${this.apiUrl}/house`);
+  // }
   houseFunc() {
     return this.http.get(`${this.apiUrl}/house`);
   }
