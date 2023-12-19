@@ -4,9 +4,9 @@ const House = require('../models/house');
 
 // Маршрут для добавления дома
 router.post('/add-house', async (req, res) => {
-  // try {
+  try {
+    // console.log(req.body.location); 
     const { location, houseType, numberOfRooms, monthlyCost, contactInfo } = req.body;
-    console.log(req.body); 
     // console.log(req.body.location);
     // Проверяем, что обязательные поля переданы
     if (!location || !houseType || !numberOfRooms || !monthlyCost || !contactInfo) {
@@ -28,12 +28,12 @@ router.post('/add-house', async (req, res) => {
 
     // Возвращаем успешный ответ
     res.status(201).json({ message: 'Дом успешно добавлен', house: newHouse });
-    // } catch (error) {
-    // console.error('Ошибка добавления дома:', error);
+    } catch (error) {
+    console.error('Ошибка добавления дома:', error);
     // console.log(req.body);99
     // console.log(req.body.location);
-    // res.status(500).json({ message: 'Произошла ошибка при добавлении дома' });
-    // }
+    res.status(500).json({ message: 'Произошла ошибка при добавлении дома' });
+    }
   });
 
 module.exports = router;

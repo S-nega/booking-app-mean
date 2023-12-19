@@ -22,7 +22,6 @@ const houseBookingSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  // Другие поля, если необходимо
 });
 
 // Виртуальное поле для расчета стоимости на основе сроков аренды

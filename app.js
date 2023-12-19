@@ -14,6 +14,7 @@ const houseRouter = require('./controllers/housecontr')
 
 
 const app = express();
+app.use(express.json());
 app.use(cors()); //Разрешение на cors
 
 // const server = http.createServer(app);

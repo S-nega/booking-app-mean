@@ -22,7 +22,6 @@ const houseSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  // Другие поля, если необходимо
 });
 
 const House = mongoose.model('House', houseSchema);

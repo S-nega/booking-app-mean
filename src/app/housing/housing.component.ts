@@ -10,6 +10,7 @@ export class HousingComponent {
   constructor(private apiService: ApiService) { }
   ngOnInit() {
     this.apiService.houseFunc().subscribe((data: any) => {
+      console.log('Успешно поприветствовали house')
     });
 }
 }
