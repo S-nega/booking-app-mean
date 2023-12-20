@@ -256,13 +256,13 @@
     margin-right: 4px;
   }
 
-  svg#clouds {
+  /* svg#clouds {
     position: fixed;
     bottom: -160px;
     left: -230px;
     z-index: -10;
     width: 1920px;
-  }
+  } */
 
   /* Responsive Styles */
   @media screen and (max-width: 767px) {
@@ -337,7 +337,7 @@
 }
 
 footer{
-    padding:50px 15%;
+    padding:50px 15% 0;
     position: fixed;
     bottom: 0;
 }

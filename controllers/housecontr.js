@@ -15,11 +15,13 @@ router.post('/add-house', async (req, res) => {
 
     // Создаем новый объект дома
     const newHouse = new House({
-      location: location,
-      houseType: houseType,
-      numberOfRooms: numberOfRooms,
-      monthlyCost: monthlyCost,
-      contactInfo: contactInfo,
+      location: location,//по локации будет проводиться основной поиск
+      hotelName: hotelName,//название отеля
+      houseType: houseType,//тип номерa
+      numberOfRooms: numberOfRooms,//количество людей которые могут заселиться (1 комната = 2 человека)
+      daylyCost: daylyCost,// стоимость в сутки
+      description: description, //описание отеля
+      contactInfo: contactInfo, 
       // Другие поля, если необходимо
     });
 

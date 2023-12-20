@@ -12,6 +12,7 @@ const bookingRouter = require('./routes/booking');
 
 
 const app = express();
+
 app.use(cors()); //Разрешение на cors
 
 // const server = http.createServer(app);
