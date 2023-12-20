@@ -1,0 +1,51 @@
+.contents{
+    padding: 10% 15% 0 15%;
+    display: flex;
+    justify-content: center;
+}
+
+h3{
+    width: 100%;
+}
+.reg-form{
+    width: 35%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.reg-form .reg-element{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.reg-form label{
+    color: #666;
+}
+.reg-form input{
+    width: 100%;
+    height: 20px;
+    border: 0;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #eef2f8;
+    margin-bottom: 20px;
+}
+.reg-form .reg-links{
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.reg-form .reg-links a{
+    color: #1976d2;
+    text-decoration: none;
+}
+
+.contents .reg-form .button{
+    height: 40px;
+    background-color: #1976d2;
+    color: #fff;
+    cursor: pointer;
+}

@@ -329,13 +329,6 @@
 }
 
 
-.booking-content{
-    padding: 0 ;
-    margin: -8px;
-    /* откорректировать body */
-    margin-top: 60px;
-}
-
 footer{
     padding:50px 15% 0;
     position: fixed;
