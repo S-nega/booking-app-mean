@@ -6,10 +6,10 @@ const House = require('../models/house');
 router.post('/add-house', async (req, res) => {
   try {
     // console.log(req.body.location); 
-    const { location, houseType, numberOfRooms, monthlyCost, contactInfo } = req.body;
+    const { location, hotelName, houseType, numberOfRooms, dailyCost, description, contactInfo } = req.body;
     // console.log(req.body.location);
     // Проверяем, что обязательные поля переданы
-    if (!location || !hotelName || !houseType || !numberOfRooms || !daylyCost || !contactInfo || !description) {
+    if (!location || !hotelName || !houseType || !numberOfRooms || !dailyCost || !contactInfo || !description) {
       return res.status(400).json({ message: 'Не все обязательные поля заполнены' });
     }
 
@@ -19,7 +19,7 @@ router.post('/add-house', async (req, res) => {
       hotelName: hotelName,//название отеля
       houseType: houseType,//тип номерa
       numberOfRooms: numberOfRooms,//количество людей которые могут заселиться (1 комната = 2 человека)
-      daylyCost: daylyCost,// стоимость в сутки
+      daylyCost: dailyCost,// стоимость в сутки
       description: description, //описание отеля
       contactInfo: contactInfo, 
       // Другие поля, если необходимо
