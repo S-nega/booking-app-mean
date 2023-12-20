@@ -35,7 +35,7 @@ houseBookingSchema.virtual('durationInDays').get(function () {
 // Middleware для расчета конечной стоимости и обновления finalCost
 houseBookingSchema.pre('save', function (next) {
   // Алгоритм расчета конечной стоимости
-  this.finalCost = this.durationInDays * (this.house.monthlyCost / 30);
+  this.finalCost = this.durationInDays * this.house.dailyCost;
   next();
 });
 

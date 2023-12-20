@@ -9,7 +9,7 @@ router.post('/add-house', async (req, res) => {
     const { location, houseType, numberOfRooms, monthlyCost, contactInfo } = req.body;
     // console.log(req.body.location);
     // Проверяем, что обязательные поля переданы
-    if (!location || !houseType || !numberOfRooms || !monthlyCost || !contactInfo) {
+    if (!location || !hotelName || !houseType || !numberOfRooms || !daylyCost || !contactInfo || !description) {
       return res.status(400).json({ message: 'Не все обязательные поля заполнены' });
     }
 

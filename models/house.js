@@ -6,6 +6,10 @@ const houseSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  hotelName: {
+    type: String,
+    required: true,
+  },
   houseType: {
     type: String,
     required: true,
@@ -14,8 +18,12 @@ const houseSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  monthlyCost: {
+  dailyCost: {
     type: Number,
+    required: true,
+  },
+  description: {
+    type: String,
     required: true,
   },
   contactInfo: {
