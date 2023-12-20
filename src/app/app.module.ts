@@ -8,6 +8,8 @@ import { AirTicketsComponent } from './air-tickets/air-tickets.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ApiService } from './service/api.service';
 import { HttpClientModule } from '@angular/common/http';
+import { RegistrationComponent } from './registration/registration.component';
+import { AuthorizationComponent } from './authorization/authorization.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
     HousingComponent,
     CarRentalComponent,
     AirTicketsComponent,
+    RegistrationComponent,
+    AuthorizationComponent,
   ],
   imports: [
     BrowserModule,
