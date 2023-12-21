@@ -1,3 +1,4 @@
+const multer = require('multer'); // для обработки form-data и изображений
 const express = require('express');
 const path = require('path');
 const cors = require("cors");
@@ -9,12 +10,13 @@ const bookingRouter = require('./routes/booking');
 const houseRouter = require('./controllers/housecontr')
 // const SearchLocation = require('./routes/api/SearchLocations')
 // const api_key = '';
-
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
 const app = express();
 app.use(express.json());
 app.use(cors()); //Разрешение на cors
-
+app.use(upload.any())
 // const server = http.createServer(app);
 // app.set('port' , 4200)
 app.use(express.static(__dirname + '/public'));
