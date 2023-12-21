@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const House = require('../models/house');
 const fs = require('fs');
+const path = require('path');
+
 
 // http://localhost:8080/api/house Адрес маршрутов
 
@@ -83,6 +85,19 @@ router.put('/:id', async (req, res) => {
       return res.status(404).json({ message: 'Дом не найден' });
     }
 
+    // Если загружено новое изображение, обновляем поле с изображением
+    if (req.file) {
+      // Удаление старого изображения из хранилища
+      if (updatedHouse.image) {
+        console.log(updatedHouse.image);
+        fs.unlinkSync(path.join( __dirname, '../',  updatedHouse.image));
+      }
+      // Сохранение нового изображения
+      const imageName = `public/images/${Date.now()}_${req.file.originalname}`;
+      fs.writeFileSync(path.join(__dirname, '../', imageName), req.file.buffer);
+      updatedHouse.image = imageName;
+      await updatedHouse.save();
+    }
     // Возвращаем успешный ответ с обновленной информацией о доме
     res.status(200).json({ message: 'Информация о доме успешно обновлена', house: updatedHouse });
   } catch (error) {
@@ -102,6 +117,10 @@ router.delete('/:id', async (req, res) => {
       return res.status(404).json({ message: 'Дом не найден' });
     }
 
+    // Удаление старого изображения из хранилища
+    if (deletedHouse.image) {
+      fs.unlinkSync(path.join(__dirname, '../', deletedHouse.image));
+    }
     // Возвращаем успешный ответ с удаленной информацией о доме
     res.status(200).json({ message: 'Дом успешно удален', house: deletedHouse });
   } catch (error) {
