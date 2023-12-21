@@ -1,5 +1,6 @@
 .contents{
-    padding: 20% 15% 0 15%;
+    margin-top: 140px;
+    padding: 20px 15% 0 15%;
     display: flex;
     justify-content: center;
 }
@@ -29,6 +30,11 @@ h3{
     padding: 10px;
     background-color: #eef2f8;
     margin-bottom: 20px;
+    border-color: #eef2f8;
+
+}
+.auth-form .auth-element input:focus{
+    border-color: #eef2f8;
 }
 .auth-form .auth-links{
     display: flex;

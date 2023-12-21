@@ -6,11 +6,10 @@
 .header-block{
     background-color: #1976d2;
     color: #fff;
-    padding:60px 15%  0 15%  ;
-
+    padding:20px 15%  0 15%  ;
     margin: 0;
-    margin-top: 120px;
-    height: 150px;
+    margin-top: 140px;
+    height: 130px;
 }
 .header-block h1, h2{
     padding: 0;

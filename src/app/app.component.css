@@ -218,18 +218,18 @@
     transform: translateY(-0.25rem);
     box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
   }
-
+/* 
   footer {
     margin-top: 8px;
     display: flex;
     align-items: center;
     line-height: 20px;
-  }
+  } */
 
-  footer a {
+  /* footer a {
     display: flex;
     align-items: center;
-  }
+  } */
 
   .github-star-badge {
     color: #24292e;
@@ -296,41 +296,60 @@
 
 
 
-
 .toolbar{
-    margin: 0;
-    height: 120px;
-    width: auto;
-    padding: 0 15%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
+  margin: 0;
+  height: 140px;
+  width: auto;
+  padding: 0 15%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
 }
 .toolbar .menu{
-    width: 70%;
-    /* height: 60px; */
-    display: flex;
-    flex-wrap: nowrap; 
-    justify-content: space-between;
-    align-items: center;
+  width: 70%;
+  /* height: 60px; */
+  display: flex;
+  flex-wrap: nowrap; 
+  /* justify-content: space-between; */
+  /* align-items: center; */
 }
 
-.toolbar .log-block{
-    width: 60%;
+.log-block{
+  justify-content: right;
 }
-
+.toolbar .log-block .menu-item{
+  margin-left: 20px;
+}
+.toolbar .links-block .menu-item{
+  margin-right: 20px;
+}
+a:hover{
+  color: #fff;
+}
 .menu-item{ 
-    color: #fff;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    padding: 0 10px;
+  color: #fff;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  padding: 13px 10px;
+  border-bottom: 2px solid #1976d2;
 }
 
-
-footer{
-    padding:50px 15% 0;
-    position: fixed;
-    bottom: 0;
+.menu .menu-item:hover{
+  color: #fff;
+  outline: none;
+  border-bottom: 2px solid #eee;
 }
+
+.menu .menu-item:target{
+  color: #fff;
+  outline: none;
+  border-bottom: 2px solid #eee;
+}
+
+/* footer{
+  padding:50px 15% 0;
+  position: fixed;
+  bottom: 0;
+} */
