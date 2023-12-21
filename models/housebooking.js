@@ -22,6 +22,9 @@ const houseBookingSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  image: {
+    type: String, 
+  },
 });
 
 // Виртуальное поле для расчета стоимости на основе сроков аренды
@@ -36,6 +39,11 @@ houseBookingSchema.virtual('durationInDays').get(function () {
 houseBookingSchema.pre('save', function (next) {
   // Алгоритм расчета конечной стоимости
   this.finalCost = this.durationInDays * this.house.dailyCost;
+
+   // Добавляем ссылку на изображение из модели House
+   if (this.house.image) {
+    this.image = this.house.image;
+  }
   next();
 });
 

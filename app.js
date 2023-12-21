@@ -1,6 +1,5 @@
 const multer = require('multer'); // для обработки form-data и изображений
 const express = require('express');
-const path = require('path');
 const cors = require("cors");
 const mongoose = require('mongoose');
 // const cookieParser = require('cookie-parser');
