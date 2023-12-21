@@ -1,41 +1,43 @@
 const express = require('express');
 const router = express.Router();
 const House = require('../models/house');
+const fs = require('fs');
 
 // http://localhost:8080/api/house Адрес маршрутов
 
-// Маршрут для добавления дома
+// Маршрут для добавления дома с изображением
 router.post('/', async (req, res) => {
   try {
-    // console.log(req.body.location); 
-    const { location, hotelName, houseType, numberOfRooms, dailyCost, description, contactInfo } = req.body;
-    // console.log(req.body.location);
-    // Проверяем, что обязательные поля переданы
-    if (!location || !hotelName || !houseType || !numberOfRooms || !dailyCost || !description || !contactInfo) {
+    const { location, hotelName, houseType, numberOfRooms, dailyCost, contactInfo, description } = req.body;
+
+    // Обработка загруженного файла
+    const uploadedFile = req.file;
+    const uniqueFileName = `${Date.now()}_${uploadedFile.originalname}`;
+    const imagePath = `public/images/${uniqueFileName}`;
+    fs.writeFileSync(imagePath, uploadedFile.buffer);
+
+    if (!location || !hotelName || !houseType || !numberOfRooms || !dailyCost || !contactInfo || !description) {
+      // Удаляем загруженный файл в случае ошибки валидации
+      fs.unlinkSync(imagePath);
       return res.status(400).json({ message: 'Не все обязательные поля заполнены' });
     }
 
-    // Создаем новый объект дома
     const newHouse = new House({
-      location: location,//по локации будет проводиться основной поиск
-      hotelName: hotelName,//название отеля
-      houseType: houseType,//тип номерa
-      numberOfRooms: numberOfRooms,//количество людей которые могут заселиться (1 комната = 2 человека)
-      dailyCost: dailyCost,// стоимость в сутки
-      description: description, //описание отеля
-      contactInfo: contactInfo,
-      // Другие поля, если необходимо
+      location,
+      hotelName,
+      houseType,
+      numberOfRooms,
+      dailyCost,
+      contactInfo,
+      description,
+      image: imagePath, // Сохраняем путь к изображению
     });
 
-    // Сохраняем в базу данных
     await newHouse.save();
 
-    // Возвращаем успешный ответ
     res.status(201).json({ message: 'Дом успешно добавлен', house: newHouse });
   } catch (error) {
     console.error('Ошибка добавления дома:', error);
-    // console.log(req.body);99
-    // console.log(req.body.location);
     res.status(500).json({ message: 'Произошла ошибка при добавлении дома' });
   }
 });
