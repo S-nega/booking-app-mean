@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const House = require('../models/house');
 
+// http://localhost:8080/api/house Адрес маршрутов
+
 // Маршрут для добавления дома
 router.post('/', async (req, res) => {
   try {
