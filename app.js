@@ -5,9 +5,6 @@ const cors = require("cors");
 const mongoose = require('mongoose');
 // const cookieParser = require('cookie-parser');
 // const logger = require('morgan');
-const indexRouter = require('./routes/index');
-const bookingRouter = require('./routes/booking');
-const houseRouter = require('./controllers/housecontr')
 // const SearchLocation = require('./routes/api/SearchLocations')
 // const api_key = '';
 const storage = multer.memoryStorage();
@@ -16,10 +13,13 @@ const upload = multer({ storage: storage });
 const app = express();
 app.use(express.json());
 app.use(cors()); //Разрешение на cors
-app.use(upload.any())
+app.use(upload.single('image'))
 // const server = http.createServer(app);
 // app.set('port' , 4200)
 app.use(express.static(__dirname + '/public'));
+const indexRouter = require('./routes/index');
+const bookingRouter = require('./routes/booking');
+const houseRouter = require('./controllers/housecontr')
 // app.use('/index', indexRouter);
 app.use('/', bookingRouter);
 app.use('/api/house', houseRouter);
