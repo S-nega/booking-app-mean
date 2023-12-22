@@ -4,6 +4,7 @@ const House = require('../models/house');
 
 // Маршрут для добавления дома
 router.post('/', async (req, res) => {
+  console.log("house controller try to add house");//не доходит при вызове через браузер 
   try {
     // console.log(req.body.location); 
     const { location, hotelName, houseType, numberOfRooms, dailyCost, description, contactInfo } = req.body;
@@ -45,6 +46,9 @@ router.get('/', async (req, res) => {
     const houses = await House.find();
 
     // Возвращаем список домов в ответе
+    console.log('hotels list');
+    console.log({houses});
+    // res.status(200).render('housing', {houses: houses})
     res.status(200).json({ houses });
   } catch (error) {
     console.error('Ошибка при получении списка домов:', error);

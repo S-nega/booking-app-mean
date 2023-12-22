@@ -4,6 +4,7 @@ var router = express.Router();
 /* GET home page. */
 router.get('/house', function (req, res) {
   console.log('hello house');
+  // res.redirect
   // res.send('./src/app/housing/housing.component.html');
   // res.render('housing', { title: 'Express' }); 
   //Возникает ошибка птому что не установлен шаблонизатор
