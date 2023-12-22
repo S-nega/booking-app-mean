@@ -9,6 +9,7 @@ import { ApiService } from '../service/api.service';
 })
 export class RegNewHouseComponent {
   regHouseForm: FormGroup;
+  // imageSrc: string;
 
   constructor(private formBuilder: FormBuilder, private apiService: ApiService){
     this.regHouseForm = this.formBuilder.group({
@@ -21,7 +22,18 @@ export class RegNewHouseComponent {
       contactInfo: [''],
     });
   }
+  
+  // readURL(event: Event): void {
+  //   if (event.target.files && event.target.files[0]) {
+  //       const file = event.target.files[0];
 
+  //       const reader = new FileReader();
+  //       reader.onload = e => this.imageSrc = reader.result;
+
+  //       reader.readAsDataURL(file);
+  //   }
+  // }
+  
   onSubmit(){
     console.log("reg-new-house component try to add house")
     if(this.regHouseForm.valid){

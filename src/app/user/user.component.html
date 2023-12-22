@@ -1,0 +1,137 @@
+<div class="contents">
+    <div class="content-item user">
+        <div class="image-block">
+            <!-- Настроить сохранение и отображение изображений -->
+            <!-- <img src="" > -->    
+        </div> 
+
+        <div class="info-block">
+            <div class="header-info-block">
+                <a class="name">Имя Фамилия </a>
+                <!-- {{user}} -->
+                <!-- если есть -->
+                <p class="location">Company</p>   
+            </div>
+
+            <div class="description-block">
+                <p class="description">
+                    Я турагент ...
+                </p>
+            </div>
+
+            <div class="contact-block">
+                <p class="contact-element">
+                    +77077770707
+                <br>
+                    email.com
+                </p>
+            </div>
+        </div>
+    </div>
+
+        <!-- отображение списка бронирований. Новые сверху  -->
+    <div class="content-list housing"> 
+        <h3>Мои бронирования</h3>
+    <!-- <div class="content-list housing" *ngFor="let data of houses; let i = index">  -->
+        <div class="content-item housing">
+
+            <div class="image-block">
+            <!-- Настроить сохранение и отображение изображений -->
+            <!-- <img src="" > -->    
+            </div> 
+
+            <div class="info-block">
+                <!-- ссылка на страницу с подробробной инфой  -->
+                <div class="header-info-block">
+                    <a href="#" class="name">Гостевой Дом У Моря Siesta</a>
+                    <p class="location">
+                        Vityzevo
+                        <!-- {{houses.location}} -->
+                    </p>
+                </div>
+
+                <div class="description-block">
+                    <p class="description">
+                        Гостевой дом У моря siesta находится в Витязево. 
+                        Этот гостевой дом располагается в пешей доступности от центра города. 
+                        Рядом с гостевым домом — пляж «Кавказ», пляж «Жемчужина» и пляж «Одиссея».
+                    </p>
+                </div>
+
+                <div class="buttons-block">
+                    <p>
+                        Номер Garden Deluxe
+                        <br>
+                        Одна комана, на 2 персоны
+                    </p>
+                    <!-- переходна подробную инфу об отеле -->
+                    <!-- <a href="#" onclick="showDopInfo()" id="info-button" class="info-button button">Об отеле</a> -->
+                    <!-- переход на более подробную инфу и оформление заявки -->
+                    <!-- <a href="#" class="order-button button">KZT 21000</a> -->
+                </div>
+                <!-- <div class="dop-info-block">
+                    <p>number Type</p>
+                    <p>number of rooms</p>
+                </div> -->
+                <!-- {{data.location}}
+                {{data.hotelName}}
+                {{data.houseType}}
+                {{data.numberOfRooms}}
+                {{data.daylyCost * }}
+                {{data.daylyCost}} -->
+            </div>
+        </div>
+        
+        <div class="content-item details">
+            <div class="details-block period">
+    
+                <div class="details-item from">
+                    Дата заселения:
+                    <br>
+                    ../../....
+                </div>
+                
+                <div class="details-item to">
+                    Дата выселения:
+                    <br>
+                    ../../....
+                </div>
+                
+                <div class="details-item nights">
+                    Итого:
+                    <br>
+                    ... ночей
+                </div>
+    
+            </div>
+    
+            <div class="details-block traveller">
+                <div class="details-item name">
+                    Name Surname
+                </div>
+                <div class="details-item age">
+                    23
+                </div>
+                <div class="details-item phone">
+                    +77077077007
+                </div>
+                <div class="details-item email">
+                    email@email.com
+                </div>
+            </div>
+    
+            <div class="details-block price">
+                <div class="details-item daily-cost">
+                    Daily Cost:
+                    <br>
+                    12000
+                </div>
+                <div class="details-item final-cost">
+                    Final Cost:
+                    <br>
+                    36000
+                </div>
+            </div>
+        </div>
+    </div> 
+</div>

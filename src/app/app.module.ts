@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { RegistrationComponent } from './registration/registration.component';
 import { AuthorizationComponent } from './authorization/authorization.component';
 import { RegNewHouseComponent } from './reg-new-house/reg-new-house.component';
+import { UserComponent } from './user/user.component';
+import { HouseBookingComponent } from './house-booking/house-booking.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { RegNewHouseComponent } from './reg-new-house/reg-new-house.component';
     RegistrationComponent,
     AuthorizationComponent,
     RegNewHouseComponent,
+    UserComponent,
+    HouseBookingComponent,
   ],
   imports: [
     BrowserModule,

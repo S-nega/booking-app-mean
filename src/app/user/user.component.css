@@ -1,0 +1,15 @@
+.contents{
+    padding: 160px 15%;
+}
+
+.info-block{
+    /* align-content: flex-start; */
+    width: 100%;
+}
+.info-block div{
+    width: 100%;
+}
+.user{
+    height: auto;
+    min-height: 200px;
+}

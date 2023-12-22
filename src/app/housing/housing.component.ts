@@ -10,10 +10,10 @@ import { ApiService } from '../service/api.service';
 export class HousingComponent {
   constructor(private apiService: ApiService) {}
   ngOnInit() {
-    console.log('Успешно поприветствовали house')
+    console.log('Успешно поприветствовали house')//не проходит при вызове из браузера
     const houses = this.apiService.houseFunc();
-    this.apiService.houseFunc().subscribe((data: any) => {
-      const houses = this.apiService.houseFunc();
+    this.apiService.houseFunc().subscribe((houses: any) => {
+      // const houses = this.apiService.houseFunc();
       console.log('Успешно поприветствовали house')
     });
   }
