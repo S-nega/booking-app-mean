@@ -45,6 +45,7 @@
     color: #777;
 }
 .search-form input{
+    outline: none;
     border: 0;
 }
 
@@ -118,7 +119,8 @@
     width: 100%;
     display: flex;
     flex-wrap: nowrap;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    justify-content: right;
 }
 .info-block .button{
     padding: 11px 12px;

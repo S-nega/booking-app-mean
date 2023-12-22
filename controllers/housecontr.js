@@ -9,6 +9,7 @@ const path = require('path');
 
 // Маршрут для добавления дома с изображением
 router.post('/', async (req, res) => {
+  console.log("house controller try to add house");//не доходит при вызове через браузер 
   try {
     const { location, hotelName, houseType, numberOfRooms, dailyCost, contactInfo, description } = req.body;
 
@@ -51,6 +52,9 @@ router.get('/', async (req, res) => {
     const houses = await House.find();
 
     // Возвращаем список домов в ответе
+    console.log('hotels list');
+    console.log({houses});
+    // res.status(200).render('housing', {houses: houses})
     res.status(200).json({ houses });
   } catch (error) {
     console.error('Ошибка при получении списка домов:', error);

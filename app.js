@@ -20,10 +20,11 @@ const indexRouter = require('./routes/index');
 const bookingRouter = require('./routes/booking');
 const houseRouter = require('./controllers/housecontr')
 // app.use('/index', indexRouter);
-app.use('/', bookingRouter);
+// app.use('/', bookingRouter);
+// app.use('/', houseRouter);
 app.use('/api/house', houseRouter);
 module.exports = app;
-
+//LlL2o4iyDHNYPckW
 async function connectToMongoDB() {
     await mongoose.connect('mongodb://127.0.0.1:27017/booking')
     .then(() => console.log('Соединение с MongoDB установлено'))
