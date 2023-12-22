@@ -5,12 +5,15 @@ import { ApiService } from '../service/api.service';
 @Component({
   selector: 'app-reg-new-house',
   templateUrl: './reg-new-house.component.html',
-  styleUrls: ['../registration/registration.component.css']
+  styleUrls: ['../registration/registration.component.css'],
 })
 export class RegNewHouseComponent {
   regHouseForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private apiService: ApiService){
+  constructor(
+    private formBuilder: FormBuilder,
+    private apiService: ApiService
+  ) {
     this.regHouseForm = this.formBuilder.group({
       location: [''],
       hotelName: [''],
@@ -22,16 +25,22 @@ export class RegNewHouseComponent {
     });
   }
 
-  onSubmit(){
-    console.log("reg-new-house component try to add house")
-    if(this.regHouseForm.valid){
+  onSubmit() {
+    console.log('reg-new-house component try to add house');
+    if (this.regHouseForm.valid) {
       const houseData = this.regHouseForm.value;
 
       this.apiService.regNewHouseFunc(houseData).subscribe(
         () => {
-          console.log('new house added successfull');
+          console.log('Дом успешно зарегистрирован:');
+          // Вы можете выполнить дополнительные действия после успешной регистрации
+        },
+        (error: any) => {
+          console.log(houseData);
+          console.error('Ошибка при регстрации дома:', error);
+          // Обработайте ошибку, например, показав сообщение об ошибке на фронтенде
         }
-      )
+      );
     }
   }
 }

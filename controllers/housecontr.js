@@ -14,14 +14,19 @@ router.post('/', async (req, res) => {
     const { location, hotelName, houseType, numberOfRooms, dailyCost, contactInfo, description } = req.body;
 
     // Обработка загруженного файла
-    const uploadedFile = req.file;
-    const uniqueFileName = `${Date.now()}_${uploadedFile.originalname}`;
-    const imagePath = `public/images/${uniqueFileName}`;
-    fs.writeFileSync(imagePath, uploadedFile.buffer);
+    let imagePath=null
+    if (req.file) {
+      const uploadedFile = req.file;
+      const uniqueFileName = `${Date.now()}_${uploadedFile.originalname}`;
+      const imagePath = `public/images/${uniqueFileName}`;
+      fs.writeFileSync(imagePath, uploadedFile.buffer);
+    }
 
     if (!location || !hotelName || !houseType || !numberOfRooms || !dailyCost || !contactInfo || !description) {
       // Удаляем загруженный файл в случае ошибки валидации
-      fs.unlinkSync(imagePath);
+      if (req.file) {
+        fs.unlinkSync(imagePath);
+      }
       return res.status(400).json({ message: 'Не все обязательные поля заполнены' });
     }
 
@@ -33,8 +38,11 @@ router.post('/', async (req, res) => {
       dailyCost,
       contactInfo,
       description,
-      image: imagePath, // Сохраняем путь к изображению
     });
+
+    if (imagePath) {
+      newHouse.image = imagePath; // Добавляем путь к изображению, если он существует
+    }
 
     await newHouse.save();
 
@@ -53,7 +61,7 @@ router.get('/', async (req, res) => {
 
     // Возвращаем список домов в ответе
     console.log('hotels list');
-    console.log({houses});
+    console.log({ houses });
     // res.status(200).render('housing', {houses: houses})
     res.status(200).json({ houses });
   } catch (error) {
@@ -94,7 +102,7 @@ router.put('/:id', async (req, res) => {
       // Удаление старого изображения из хранилища
       if (updatedHouse.image) {
         console.log(updatedHouse.image);
-        fs.unlinkSync(path.join( __dirname, '../',  updatedHouse.image));
+        fs.unlinkSync(path.join(__dirname, '../', updatedHouse.image));
       }
       // Сохранение нового изображения
       const imageName = `public/images/${Date.now()}_${req.file.originalname}`;
