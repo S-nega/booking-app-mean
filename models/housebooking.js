@@ -17,27 +17,17 @@ const houseBookingSchema = new mongoose.Schema({
   },
   finalCost: {
     type: Number,
+    required: true,
   },
   contactInfo: {
     type: String,
     required: true,
   },
+  image: {
+    type: String, 
+  },
 });
 
-// Виртуальное поле для расчета стоимости на основе сроков аренды
-houseBookingSchema.virtual('durationInDays').get(function () {
-  const start = this.startDate.getTime();
-  const end = this.endDate.getTime();
-  const durationInDays = Math.ceil((end - start) / (1000 * 60 * 60 * 24));
-  return durationInDays;
-});
-
-// Middleware для расчета конечной стоимости и обновления finalCost
-houseBookingSchema.pre('save', function (next) {
-  // Алгоритм расчета конечной стоимости
-  this.finalCost = this.durationInDays * this.house.dailyCost;
-  next();
-});
 
 const HouseBooking = mongoose.model('HouseBooking', houseBookingSchema);
 

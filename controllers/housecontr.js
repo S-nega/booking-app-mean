@@ -1,40 +1,54 @@
 const express = require('express');
 const router = express.Router();
 const House = require('../models/house');
+const fs = require('fs');
+const path = require('path');
 
-// Маршрут для добавления дома
+
+// http://localhost:8080/api/house Адрес маршрутов
+
+// Маршрут для добавления дома с изображением
 router.post('/', async (req, res) => {
   console.log("house controller try to add house");//не доходит при вызове через браузер 
   try {
-    // console.log(req.body.location); 
-    const { location, hotelName, houseType, numberOfRooms, dailyCost, description, contactInfo } = req.body;
-    // console.log(req.body.location);
-    // Проверяем, что обязательные поля переданы
-    if (!location || !hotelName || !houseType || !numberOfRooms || !dailyCost || !description || !contactInfo) {
+    const { location, hotelName, houseType, numberOfRooms, dailyCost, contactInfo, description } = req.body;
+
+    // Обработка загруженного файла
+    let imagePath=null
+    if (req.file) {
+      const uploadedFile = req.file;
+      const uniqueFileName = `${Date.now()}_${uploadedFile.originalname}`;
+      const imagePath = `public/images/${uniqueFileName}`;
+      fs.writeFileSync(imagePath, uploadedFile.buffer);
+    }
+
+    if (!location || !hotelName || !houseType || !numberOfRooms || !dailyCost || !contactInfo || !description) {
+      // Удаляем загруженный файл в случае ошибки валидации
+      if (req.file) {
+        fs.unlinkSync(imagePath);
+      }
       return res.status(400).json({ message: 'Не все обязательные поля заполнены' });
     }
 
-    // Создаем новый объект дома
     const newHouse = new House({
-      location: location,//по локации будет проводиться основной поиск
-      hotelName: hotelName,//название отеля
-      houseType: houseType,//тип номерa
-      numberOfRooms: numberOfRooms,//количество людей которые могут заселиться (1 комната = 2 человека)
-      dailyCost: dailyCost,// стоимость в сутки
-      description: description, //описание отеля
-      contactInfo: contactInfo,
-      // Другие поля, если необходимо
+      location,
+      hotelName,
+      houseType,
+      numberOfRooms,
+      dailyCost,
+      contactInfo,
+      description,
     });
 
-    // Сохраняем в базу данных
+    if (imagePath) {
+      newHouse.image = imagePath; // Добавляем путь к изображению, если он существует
+    }
+
     await newHouse.save();
 
-    // Возвращаем успешный ответ
     res.status(201).json({ message: 'Дом успешно добавлен', house: newHouse });
   } catch (error) {
     console.error('Ошибка добавления дома:', error);
-    // console.log(req.body);99
-    // console.log(req.body.location);
     res.status(500).json({ message: 'Произошла ошибка при добавлении дома' });
   }
 });
@@ -47,7 +61,7 @@ router.get('/', async (req, res) => {
 
     // Возвращаем список домов в ответе
     console.log('hotels list');
-    console.log({houses});
+    console.log({ houses });
     // res.status(200).render('housing', {houses: houses})
     res.status(200).json({ houses });
   } catch (error) {
@@ -83,6 +97,19 @@ router.put('/:id', async (req, res) => {
       return res.status(404).json({ message: 'Дом не найден' });
     }
 
+    // Если загружено новое изображение, обновляем поле с изображением
+    if (req.file) {
+      // Удаление старого изображения из хранилища
+      if (updatedHouse.image) {
+        console.log(updatedHouse.image);
+        fs.unlinkSync(path.join(__dirname, '../', updatedHouse.image));
+      }
+      // Сохранение нового изображения
+      const imageName = `public/images/${Date.now()}_${req.file.originalname}`;
+      fs.writeFileSync(path.join(__dirname, '../', imageName), req.file.buffer);
+      updatedHouse.image = imageName;
+      await updatedHouse.save();
+    }
     // Возвращаем успешный ответ с обновленной информацией о доме
     res.status(200).json({ message: 'Информация о доме успешно обновлена', house: updatedHouse });
   } catch (error) {
@@ -102,6 +129,10 @@ router.delete('/:id', async (req, res) => {
       return res.status(404).json({ message: 'Дом не найден' });
     }
 
+    // Удаление старого изображения из хранилища
+    if (deletedHouse.image) {
+      fs.unlinkSync(path.join(__dirname, '../', deletedHouse.image));
+    }
     // Возвращаем успешный ответ с удаленной информацией о доме
     res.status(200).json({ message: 'Дом успешно удален', house: deletedHouse });
   } catch (error) {

@@ -3,37 +3,34 @@
         <h3>Добавление нового объекта размещения</h3>
         <div class="hotelName reg-element"> 
             <label for="hotelName">Название отеля</label>
-            <input type="text" id="hotelName" name="hotelName" placeholder="Название отеля">
+            <input type="text" id="hotelName" name="hotelName" formControlName="hotelName" placeholder="Название отеля">
         </div>
         <div class="location reg-element"> 
             <label for="location">Локация</label>
-            <input type="text" id="location" name="location" placeholder="Добавьте адрес">
+            <input type="text" id="location" name="location" formControlName="location" placeholder="Добавьте адрес">
         </div>
         <div class="houseType reg-element"> 
             <label for="houseType">Тип номера</label>
-            <input type="text" id="houseType" name="houseType" placeholder="Deluxe">
+            <input type="text" id="houseType" name="houseType" formControlName="houseType" placeholder="Deluxe">
         </div>
         <div class="numberOfRooms reg-element">
             <label for="numberOfRooms">Количество комнат</label>
-            <input type="number" id="numberOfRooms" name="numberOfRooms" placeholder="2">
+            <input type="number" id="numberOfRooms" name="numberOfRooms" formControlName="numberOfRooms" placeholder="2">
         </div>
         <div class="dailyCost reg-element">
             <label for="dailyCost">Стоимость в сутки</label>
-            <input type="number" id="dailyCost" name="dailyCost" placeholder="12000">
+            <input type="number" id="dailyCost" name="dailyCost" formControlName="dailyCost" placeholder="12000">
         </div>
         <div class="description reg-element">
             <label for="description">Описание</label>
-            <input type="textarea" id="description" name="description" placeholder="Добавьте описание своего отеля">
+            <input type="textarea" id="description" name="description" formControlName="description" placeholder="Добавьте описание своего отеля">
         </div>
         <div class="contactInfo reg-element">
             <label for="contactInfo">Контактная информация</label>
-            <input type="text" id="contactInfo" name="contactInfo" placeholder="Номер или почта">
+            <input type="text" id="contactInfo" name="contactInfo" formControlName="contactInfo" placeholder="Номер или почта">
         </div>
-        <div class="reg-element">
-            <!-- <input type='file' (change)="readURL($event);" />
-            <img id="blah" [src]="imageSrc || 'http://placehold.it/180'" alt="your image" /> -->
-        </div>
-        <button class="button" type="submit" > reg</button>
+        <button class="button" type="submit" [disabled]="regHouseForm.invalid"> reg</button>
+
     </form>
 
 </div>
