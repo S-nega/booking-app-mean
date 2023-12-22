@@ -8,11 +8,11 @@
     <div class="contents">
 
         <form class="search-form housing" method="post" >
-        <!-- <form [formGroup]="house-search-form" (hgSubmit)="onSubmit()"></form> -->
+        <!-- <form [formGroup]="house-search-form" (hgSubmit)="onSubmit()"> -->
             <!-- изменить стиль при нажатии  -->
             <div class="input-item">
                 <label for="location">Направление</label>
-                <input type="text" name="location" id="locaation" placeholder="Куда вы хотите поехать?">
+                <input type="text" name="location" id="location" placeholder="Куда вы хотите поехать?">
             </div>
             <!-- ограничить выбор дат -->
             <div class="input-item">
@@ -58,20 +58,23 @@
                             Этот гостевой дом располагается в пешей доступности от центра города. 
                             Рядом с гостевым домом — пляж «Кавказ», пляж «Жемчужина» и пляж «Одиссея».
                         </p>
-                        <!-- Номер Garden Deluxe -->
-                        <!-- <p>Одна комана, на 2 персоны</p> -->
                     </div>
 
                     <div class="buttons-block">
+                        <p>
+                            Номер Garden Deluxe
+                            <br>
+                            Одна комана, на 2 персоны
+                        </p>
                         <!-- переходна подробную инфу об отеле -->
                         <!-- <a href="#" onclick="showDopInfo()" id="info-button" class="info-button button">Об отеле</a> -->
                         <!-- переход на более подробную инфу и оформление заявки -->
-                        <a href="#" class="order-button button">KZT 21000</a>
+                        <a href="/house-booking" class="order-button button">KZT 21000</a>
                     </div>
-                    <div class="dop-info-block">
+                    <!-- <div class="dop-info-block">
                         <p>number Type</p>
                         <p>number of rooms</p>
-                    </div>
+                    </div> -->
                     <!-- {{data.location}}
                     {{data.hotelName}}
                     {{data.houseType}}
