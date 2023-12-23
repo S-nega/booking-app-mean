@@ -17,7 +17,7 @@ export class ApiService {
     console.log(houseData);
     return this.http.post<any>(`${this.apiUrl}/api/house`, houseData);
   }
-  getHouses(): Observable<any[]> {
+  getHouses(): Observable<any[]> {  
     return this.http.get<any[]>(`${this.apiUrl}/api/house`);
   }
   getHouse(houseId: string): Observable<any[]> {
@@ -28,5 +28,24 @@ export class ApiService {
   }
   deleteHouse(houseId: string): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/api/house/${houseId}`);
+  }
+
+  //Booking
+  bookHouse(bookingData:any) {
+    console.log("try to add house");
+    console.log(bookingData);
+    return this.http.post<any>(`${this.apiUrl}/api/housebooking`, bookingData);
+  }
+  getBookings(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/api/housebooking`);
+  }
+  getBooking(bookingId: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/api/housebooking/${bookingId}`);
+  }
+  updateBooking(bookingId: string,  updatedData: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/api/housebooking/${bookingId}`, updatedData);
+  }
+  deleteBooking(bookingId: string): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/api/housebooking/${bookingId}`);
   }
 }

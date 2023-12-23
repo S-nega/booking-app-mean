@@ -8,13 +8,16 @@ import { ApiService } from '../service/api.service';
   styleUrls: ['./housing.component.css']
 })
 export class HousingComponent {
+  houses: any[] = [];
+
   constructor(private apiService: ApiService) {}
   ngOnInit() {
-    console.log('Успешно поприветствовали house')//не проходит при вызове из браузера
-    const houses = this.apiService.houseFunc();
-    this.apiService.houseFunc().subscribe((houses: any) => {
+    // console.log('Успешно поприветствовали house')//не проходит при вызове из браузера
+    // const houses = this.apiService.houseFunc();
+    this.apiService.getHouses().subscribe((houses: any) => {
       // const houses = this.apiService.houseFunc();
-      console.log('Успешно поприветствовали house')
+      this.houses = houses.houses;
+      console.log('Успешно поприветствовали house:', houses)
     });
   }
 
