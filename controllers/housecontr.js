@@ -14,7 +14,6 @@ router.post('/', async (req, res) => {
     const { location, hotelName, houseType, numberOfRooms, dailyCost, contactInfo, description } = req.body;
 
     // Обработка загруженного файла
-    let imagePath=null
     if (req.file) {
       const uploadedFile = req.file;
       const uniqueFileName = `${Date.now()}_${uploadedFile.originalname}`;
@@ -40,7 +39,7 @@ router.post('/', async (req, res) => {
       description,
     });
 
-    if (imagePath) {
+    if (req.file) {
       newHouse.image = imagePath; // Добавляем путь к изображению, если он существует
     }
 
