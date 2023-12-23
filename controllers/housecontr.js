@@ -9,10 +9,10 @@ const path = require('path');
 
 // Маршрут для добавления дома с изображением
 router.post('/', async (req, res) => {
-  console.log("house controller try to add house");//не доходит при вызове через браузер 
+  console.log("house controller try to add house");//доходит при вызове через браузер 
   try {
     const { location, hotelName, houseType, numberOfRooms, dailyCost, contactInfo, description } = req.body;
-
+    
     // Обработка загруженного файла
     let imagePath=null
     if (req.file) {
@@ -47,6 +47,7 @@ router.post('/', async (req, res) => {
     await newHouse.save();
 
     res.status(201).json({ message: 'Дом успешно добавлен', house: newHouse });
+    // res.redirect('houses'); //отправить на общий список
   } catch (error) {
     console.error('Ошибка добавления дома:', error);
     res.status(500).json({ message: 'Произошла ошибка при добавлении дома' });
@@ -63,7 +64,8 @@ router.get('/', async (req, res) => {
     console.log('hotels list');
     console.log({ houses });
     // res.status(200).render('housing', {houses: houses})
-    res.status(200).json({ houses });
+    res.status(200).json({ houses }); // данные не отображаются в браузере, только в консоли
+    // res.status(200).render('housing', {houses})
   } catch (error) {
     console.error('Ошибка при получении списка домов:', error);
     res.status(500).json({ message: 'Произошла ошибка при получении списка домов' });

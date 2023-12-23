@@ -8,8 +8,7 @@
     <div class="contents">
 
         <form class="search-form housing" method="post" >
-        <!-- <form [formGroup]="house-search-form" (hgSubmit)="onSubmit()"> -->
-            <!-- изменить стиль при нажатии  -->
+        <!-- <form [formGroup]="houseSearchForm" (ngSubmit)="onSubmit()" class="search-form housing"> -->
             <div class="input-item">
                 <label for="location">Направление</label>
                 <input type="text" name="location" id="location" placeholder="Куда вы хотите поехать?">
@@ -20,7 +19,7 @@
                 <input type="date" name="arrival-day" id="arrival-day" placeholder="25 марта">    
             </div>
             <div class="input-item">
-                <label for="arrival-day">День выезда</label>
+                <label for="departer-day">День выезда</label>
                 <input type="date" name="departer-day" id="departer-day" placeholder="25 марта">    
             </div>
             <!-- выпадающее меню (максимум 6 взр + 3 ребенка)-->
@@ -28,13 +27,18 @@
                 <label for="passangers">Туристы</label>
                 <input type="text" name="passangers" id="passangers" placeholder="2 взрослых">                
             </div>
+            <!-- <input class="button" type="submit" [disabled]="houseSearchForm.invalid" value="Найти"> -->
             <input class="button" type="submit" value="Найти">
         </form>
-        <!-- {{houses}} -->
 
+        <!-- {{housesList}} приходит пустая -->
+        <!-- {{houses}} не видит такую переменную -->
+
+
+        
         <!-- отображение списка всех доступных вариантов -->
         <div class="content-list housing"> 
-        <!-- <div class="content-list housing" *ngFor="let data of houses; let i = index">  -->
+        <!-- <div class="content-list housing" *ngFor="let data of housesList; let i = index">  -->
             <div class="content-item housing">
 
                 <div class="image-block">
@@ -43,12 +47,11 @@
                 </div> 
 
                 <div class="info-block">
-                    <!-- ссылка на страницу с подробробной инфой  -->
                     <div class="header-info-block">
-                        <a href="#" class="name">Гостевой Дом У Моря Siesta</a>
+                        <a href="/house-booking" class="name">Гостевой Дом У Моря Siesta</a>
                         <p class="location">
                             Vityzevo
-                            <!-- {{houses.location}} -->
+                            <!-- {{data.location}} -->
                         </p>
                     </div>
 
@@ -66,27 +69,12 @@
                             <br>
                             Одна комана, на 2 персоны
                         </p>
-                        <!-- переходна подробную инфу об отеле -->
-                        <!-- <a href="#" onclick="showDopInfo()" id="info-button" class="info-button button">Об отеле</a> -->
                         <!-- переход на более подробную инфу и оформление заявки -->
                         <a href="/house-booking" class="order-button button">KZT 21000</a>
                     </div>
-                    <!-- <div class="dop-info-block">
-                        <p>number Type</p>
-                        <p>number of rooms</p>
-                    </div> -->
-                    <!-- {{data.location}}
-                    {{data.hotelName}}
-                    {{data.houseType}}
-                    {{data.numberOfRooms}}
-                    {{data.daylyCost * }}
-                    {{data.daylyCost}} -->
                 </div>
             </div>
         </div> 
     </div>
 
     <div class="footer"></div>
-
-    
-<!-- </div> -->

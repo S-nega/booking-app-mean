@@ -7,36 +7,22 @@
 
     <div class="contents">
         <form class="search-form air-tickets">
-
-            <!-- добавить сложный конструктор -->
-            <input id="address1" type="text" name="place-name" placeholder="Откуда вы хотите поехать?">
-            <button id="swap" name="swap" type="button" onclick="swap(address1, address2)">swap</button>
-            <input id="address2" type="text" name="place-name" placeholder="Куда вы хотите поехать?">
-            <input type="date" name="dates" placeholder="25 марта">
-            <input type="text" name="passangers" placeholder="2 взрослых">
+            <div class="input-item">
+                <label>Откуда вы хотите поехать?</label>
+                <input id="address1" type="text" name="place-name" placeholder="Откуда вы хотите поехать?">
+            </div>
+            <div class="input-item">
+                <label>Куда вы хотите поехать?</label>
+                <input id="address2" type="text" name="place-name" placeholder="Куда вы хотите поехать?">
+            </div>
+            <div class="input-item">
+                <label>Дата отправления</label>
+                <input type="date" name="dates" placeholder="25 марта">
+            </div>
+            <div class="input-item">
+                <label>Пассажиры</label>
+                <input type="text" name="passangers" placeholder="2 взрослых">
+            </div>
             <input class="button" type="submit" value="Найти">
         </form>
     </div>
-
-    <div class="footer"></div>
-<!-- </div> -->
-
-<script type='text/javascript'>
-    function swap(address1, address2){
-        var add1 = address1;
-        var add2 = address2;
-        address1 = add2;
-        address2 = add1;
-        // console.log(add1);
-
-    }
-    $('#swap').click(function() {
-        //Swaps previous and next address values
-        console.log(address1);
-        // var prevAddress = address1.value();
-        // var nextAddress = address2.value();
-        // var tmp = prevAddress.val();
-        // prevAddress.val(nextAddress.val());
-        // nextAddress.val(tmp);
-    });
-</script>

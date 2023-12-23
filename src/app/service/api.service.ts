@@ -13,8 +13,6 @@ export class ApiService {
     return this.http.get(`${this.apiUrl}/api/house`);
   }
   regNewHouseFunc(houseData:any) {
-    console.log("try to add house");
-    console.log(houseData);
     return this.http.post<any>(`${this.apiUrl}/api/house`, houseData);
   }
   getHouses(): Observable<any[]> {
@@ -28,5 +26,8 @@ export class ApiService {
   }
   deleteHouse(houseId: string): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/api/house/${houseId}`);
+  }
+  houseSearchFunc(houseData:any){
+    return this.http.get<any>(`${this.apiUrl}/api/house`, houseData);
   }
 }
