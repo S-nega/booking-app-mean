@@ -1,4 +1,3 @@
-
 <!-- <div class="conteiners"> -->
     <div class="header-block">
         <h1>Найдите жилье для новой поездки</h1>
@@ -47,47 +46,110 @@
         <!-- {{housesList}} приходит пустая -->
         <!-- {{houses}} не видит такую переменную -->
 
-
-        
-        <!-- отображение списка всех доступных вариантов -->
-        <div class="content-list housing"> 
-        <!-- <div class="content-list housing" *ngFor="let data of housesList; let i = index">  -->
-            <div class="content-item housing">
-
-                <div class="image-block">
-                <!-- Настроить сохранение и отображение изображений -->
-                <!-- <img src="" > -->    
-                </div> 
-
-                <div class="info-block">
-                    <div class="header-info-block">
-                        <a href="/house-booking" class="name">Гостевой Дом У Моря Siesta</a>
-                        <p class="location">
-                            Vityzevo
-                            <!-- {{data.location}} -->
-                        </p>
-                    </div>
-
-                    <div class="description-block">
-                        <p class="description">
-                            Гостевой дом У моря siesta находится в Витязево. 
-                            Этот гостевой дом располагается в пешей доступности от центра города. 
-                            Рядом с гостевым домом — пляж «Кавказ», пляж «Жемчужина» и пляж «Одиссея».
-                        </p>
-                    </div>
-
-                    <div class="buttons-block">
-                        <p>
-                            Номер Garden Deluxe
-                            <br>
-                            Одна комана, на 2 персоны
-                        </p>
-                        <!-- переход на более подробную инфу и оформление заявки -->
-                        <a href="/house-booking" class="order-button button">KZT 21000</a>
-                    </div>
-                </div>
-            </div>
-        </div> 
+<div class="contents">
+  <!-- <form class="search-form housing" method="get"> -->
+    <div class="search-form housing" method="get">
+    <!-- изменить стиль при нажатии  -->
+    <div class="input-item">
+      <label for="location">Направление</label>
+      <input [(ngModel)] = "searchLocation"
+        type="text"
+        name="location"
+        id="location"
+        placeholder="Куда вы хотите поехать?"
+      />
     </div>
+    <!-- ограничить выбор дат -->
+    <div class="input-item">
+      <label for="arrival-day">День заезда</label>
+      <input
+        type="date"
+        name="arrival-day"
+        id="arrival-day"
+        placeholder="25 марта"
+      />
+    </div>
+    <div class="input-item">
+      <label for="arrival-day">День выезда</label>
+      <input
+        type="date"
+        name="departer-day"
+        id="departer-day"
+        placeholder="25 марта"
+      />
+    </div>
+    <!-- выпадающее меню (максимум 6 взр + 3 ребенка)-->
+    <div class="input-item">
+      <label for="rooms">Кол-во комнат</label>
+      <input  [(ngModel)] = "numberOfRooms"
+        type="number"
+        name="room"
+        id="room"
+        placeholder="2"
+      />
+    </div>
+    <button class="button" (click)="search()">Найти</button>
+  </div>
+  <!-- {{houses}} -->
+
+  <!-- отображение списка всех доступных вариантов -->
+  <!-- <div class="content-list housing">  -->
+  <div class="content-list housing">
+    <div class="content-item housing" *ngFor="let house of houses">
+      <div class="image-block">
+        <!-- Настроить сохранение и отображение изображений -->
+        <img
+          *ngIf="house.image"
+          src="http://localhost:8080/{{ house.image.replace('public/', '') }}"
+          alt="House Image"
+        />
+      </div>
+
+      <div class="info-block">
+        <!-- ссылка на страницу с подробробной инфой  -->
+        <div class="header-info-block">
+          <a href="/house-booking" class="name">{{ house.hotelName }}</a>
+          <p class="location">
+            <!-- Vityzevo -->
+            {{ house.location }}
+          </p>
+        </div>
+
+        <div class="description-block">
+          <p class="description">
+            <!-- Гостевой дом У моря siesta находится в Витязево. 
+                            Этот гостевой дом располагается в пешей доступности от центра города. 
+                            Рядом с гостевым домом — пляж «Кавказ», пляж «Жемчужина» и пляж «Одиссея». -->
+            {{ house.description }}
+          </p>
+        </div>
+
+        <div class="buttons-block">
+          <p>
+            Номер {{ house.houseType }}
+            <br />
+            Кол-во комнат: {{ house.numberOfRooms }}
+          </p>
+          <!-- переходна подробную инфу об отеле -->
+          <!-- <a href="#" onclick="showDopInfo()" id="info-button" class="info-button button">Об отеле</a> -->
+          <!-- переход на более подробную инфу и оформление заявки -->
+          <a href="/house-booking" class="order-button button">
+            {{ house.dailyCost }}</a
+          >
+        </div>
+        <!-- <div class="dop-info-block">
+                        <p>number Type</p>
+                        <p>number of rooms</p>
+                    </div> -->
+        <!-- {{data.location}}
+                    {{data.hotelName}}
+                    {{data.houseType}}
+                    {{data.numberOfRooms}}
+                    {{data.daylyCost * }}
+                    {{data.daylyCost}} -->
+      </div>
+    </div>
+  </div>
+</div>
 
     <div class="footer"></div>

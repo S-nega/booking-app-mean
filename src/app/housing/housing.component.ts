@@ -8,50 +8,28 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './housing.component.html',
   styleUrls: ['./housing.component.css']
 })
-export class HousingComponent{
-  // houseSearchForm: FormGroup;
-  public housesList:any[] = [];
-
-  constructor(
-    private formBuilder: FormBuilder,
-    private apiService: ApiService,
-  ) {
-    // this.houseSearchForm = this.formBuilder.group({
-    //   location: [''],
-    //   numberOfRooms: [''],
-    //   arrival-day: [''],
-    //   departer-day: [''],
-    // });
-  }
-
+export class HousingComponent {
+  houses: any[] = [];
+  searchLocation : string = '';
+  numberOfRooms: number= 0;
+  constructor(private apiService: ApiService) {}
   ngOnInit() {
-    console.log('Успешно поприветствовали house')//не проходит при вызове из браузера
-    
-    // this.housesList = this.apiService.houseFunc();
-    this.apiService.houseFunc().subscribe((data: any) => {
-      this.housesList = data; //переменная приходит в браузер пустая
-      console.log('Успешно поприветствовали house')// не проходит при вызове из браузера
+    // console.log('Успешно поприветствовали house')//не проходит при вызове из браузера
+    // const houses = this.apiService.houseFunc();
+    this.apiService.getHouses().subscribe((houses: any) => {
+      // const houses = this.apiService.houseFunc();
+      this.houses = houses.houses;
+      console.log('Успешно поприветствовали house:', houses)
     });
   }
 
-  //не работатет поиск
-  // onSubmit(){
-  //   console.log('reg-new-house component try to add house');
-  //   if (this.houseSearchForm.valid) {
+  search(){
+    this.apiService.searchHouses(this.searchLocation, this.numberOfRooms ).subscribe((houses: any) => {
+      this.houses = houses.houses;
+      console.log('Результаты поиска');
+      
+    });
+  }
 
-  //     const houseParametrs = this.houseSearchForm.value;
 
-  //     this.apiService.houseSearchFunc(houseParametrs).subscribe(
-  //       () => {
-  //         console.log('Дом успешно зарегистрирован:');
-  //         // Вы можете выполнить дополнительные действия после успешной регистрации
-  //       },
-  //       (error: any) => {
-  //         console.log(houseParametrs);
-  //         console.error('Ошибка при регстрации дома:', error);
-  //         // Обработайте ошибку, например, показав сообщение об ошибке на фронтенде
-  //       }
-  //     );
-  //   }
-  // }
 }
