@@ -1,60 +1,59 @@
 <router-outlet/>
 
 <!-- Toolbar -->
-<a id="toolbarButton">menu</a>
+<div id="mobile-toolbar">
+  <a class="menu-item" href="/"><b>Booking.com</b></a>
 
+  <input id="menu__toggle" type="checkbox" />
+  <label class="menu__btn" for="menu__toggle">
+    <span></span>
+  </label>
+  
+  <ul class="menu__box ">
+    <li><a class="log-item menu-item" id="reg" href="/reg#reg">Зарегистрироваться</a></li>
+    <li><a class="log-item menu-item" id="auth" href="/auth#auth">Войти в аккаунт</a></li>
+    <li><a class="log-item menu-item" id="user" href="/user#user">Мой профиль</a></li>
+    <li><a class="log-item menu-item" id="logout" href="/auth#auth">Выйти</a></li>
+    <li><a class="menu-item" id="housing" href="/housing#housing">Жилье</a></li>
+    <li><a class="menu-item" id="air-tickets" href="/air-tickets#air-tickets">Авиабилеты</a></li>
+    <li><a class="menu-item" id="car-rental" href="/car-rental#car-rental">Аренда машин</a></li>
+    <li><a class="log-item menu-item" id="reg-new-house" href="/reg-new-house#reg-new-house">Зарегистрировать свой объект</a></li>
+  </ul>
+
+</div>
 <div class="toolbar" role="banner">
     <a class="menu-item" href="/"><b>Booking.com</b></a>
-    
-    <!-- <div class="header">
-      <div class="menu">
-        <ul class="menu-list">
-            <li class="staticMenu">
-                <img src="../app/menuBut1.png" alt="menu" id="menuOpenBut" >
-            </li>
-            <li id="activeMenu">
-                <ul class="menu-list">
-                    <li class="staticMenu">
-                        <img src="../images/beelineLogo.png" alt="beelineLogo">
-                        <img src="../images/menuBut2.png" alt="back" id="menuCloseBut">
-                    </li>
-                    <li class="elements">
-                        <a href="#pluses" class="links">Какие плюсы?</a>
-                    </li>
-                    <li class=" elements" id="desctop-element">
-                        <a href="#aboutRespondent" class="links">Что потребуется от тебя</a>
-                    </li>
-                    <li class=" elements" id="mobile-element">
-                        <a href="#joinUs" class="links">Как принять участие?</a>
-                    </li>
-                    <li class=" elements">
-                        <a href="#mission" class="links">Наша миссия</a>
-                    </li>
-                    <li class=" elements">
-                        <a href="#joinUsBut" class="links">Присоединиться</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </div> -->
 
-  
+    <ul class="menu log-block menu__box">
+      <li><a class="log-item menu-item" id="reg" href="/reg#reg">Зарегистрироваться</a></li>
+      <li><a class="log-item menu-item" id="auth" href="/auth#auth">Войти в аккаунт</a></li>
+      <li><a class="log-item menu-item" id="user" href="/user#user">Мой профиль</a></li>
+      <li><a class="log-item menu-item" id="logout" href="/auth#auth">Выйти</a></li>
+    </ul>
+    <ul class="menu links-block menu__box">
+      <li><a class="menu-item" id="housing" href="/housing#housing">Жилье</a></li>
+      <li><a class="menu-item" id="air-tickets" href="/air-tickets#air-tickets">Авиабилеты</a></li>
+      <li><a class="menu-item" id="car-rental" href="/car-rental#car-rental">Аренда машин</a></li>
+          <!-- отображать только при авторизации -->
+      <li><a class="log-item menu-item" id="reg-new-house" href="/reg-new-house#reg-new-house">Зарегистрировать свой объект</a></li>
+    </ul>
+
     <!-- <div class="menu"> -->
-      <div class="menu log-block">
-        <a class="log-item menu-item" id="reg" href="/reg#reg">Зарегистрироваться</a>
-        <a class="log-item menu-item" id="auth" href="/auth#auth">Войти в аккаунт</a>
+      <!-- <div class="menu log-block"> -->
+        <!-- <a class="log-item menu-item" id="reg" href="/reg#reg">Зарегистрироваться</a> -->
+        <!-- <a class="log-item menu-item" id="auth" href="/auth#auth">Войти в аккаунт</a> -->
         <!-- отображать только при авторизации -->
-        <a class="log-item menu-item" id="user" href="/user#user">Мой профиль</a>
+        <!-- <a class="log-item menu-item" id="user" href="/user#user">Мой профиль</a>
         <a class="log-item menu-item" id="logout" href="/auth#auth">Выйти</a>
       </div>
   
       <div class="menu links-block"> 
         <a class="menu-item" id="housing" href="/housing#housing">Жилье</a>
         <a class="menu-item" id="air-tickets" href="/air-tickets#air-tickets">Авиабилеты</a>
-        <a class="menu-item" id="car-rental" href="/car-rental#car-rental">Аренда машин</a>
+        <a class="menu-item" id="car-rental" href="/car-rental#car-rental">Аренда машин</a> -->
         <!-- отображать только при авторизации -->
-        <a class="log-item menu-item" id="reg-new-house" href="/reg-new-house#reg-new-house">Зарегистрировать свой объект</a>
-      </div>
+        <!-- <a class="log-item menu-item" id="reg-new-house" href="/reg-new-house#reg-new-house">Зарегистрировать свой объект</a> -->
+      <!-- </div> -->
   <!-- </div> -->
 
 </div>
@@ -62,7 +61,7 @@
   
 </div>
 
-<script >
+<!-- <script >
   menuOpenBut.onclick = function(){
       menuOpenBut.style.display = 'none';
       menuCloseBut.style.display = 'block';
@@ -74,4 +73,4 @@
       menuCloseBut.style.display = 'none';
       activeMenu.style.display = 'none';
   }
-</script>
+</script> -->

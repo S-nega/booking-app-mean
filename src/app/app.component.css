@@ -311,6 +311,7 @@
   /* height: 60px; */
   display: flex;
   flex-wrap: nowrap; 
+  margin: 0;
   /* justify-content: space-between; */
   /* align-items: center; */
 }
@@ -347,31 +348,155 @@ a:hover{
   outline: none;
   border-bottom: 2px solid #eee;
 }
-
+.menu{
+  padding-left: 0;
+}
+.menu li{
+  list-style: none;
+}
 /* footer{
   padding:50px 15% 0;
   position: fixed;
   bottom: 0;
 } */
 
-#desctop-element{
+/* #desctop-element{
   display: block;
 }
 #mobile-element{
   display: none;
+} */
+#mobile-toolbar{
+  display: none;
 }
 
-@media screen and (max-width: 520px) {
+@media screen and (max-width: 630px) {
+  #menu__toggle {
+    opacity: 0;
+  }
+  /* стилизуем кнопку */
+  .menu__btn {
+    display: flex; /* используем flex для центрирования содержимого */
+    align-items: center;  /* центрируем содержимое кнопки */
+    position: fixed;
+    right: 20px;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    z-index: 1;
+  }
+  /* добавляем "гамбургер" */
+  .menu__btn > span,
+  .menu__btn > span::before,
+  .menu__btn > span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+  }
+  .menu__btn > span::before {
+    content: '';
+    top: -8px;
+  }
+  .menu__btn > span::after {
+    content: '';
+    top: 8px;
+  }
+  /* checking */
+  #menu__toggle:checked ~ .menu__btn > span {
+    transform: rotate(45deg);
+  }
+  #menu__toggle:checked ~ .menu__btn > span::before {
+    top: 0;
+    transform: rotate(0);
+  }
+  #menu__toggle:checked ~ .menu__btn > span::after {
+    top: 0;
+    transform: rotate(90deg);
+  }
+  /* don't work */
+  #menu__toggle:checked ~ .menu__box{
+    visibility: visible;
+    left: 0;
+  }
+  #menu__toggle:checked ~ .toolbar {
+    display: block;
+    /* left: 0; */
+  }
+  /* animation */
+  .menu__btn > span,
+  .menu__btn > span::before,
+  .menu__btn > span::after {
+    transition-duration: .25s;
+  }
+  .menu__box {
+    transition-duration: .25s;
+  }
+  .menu__item {
+    transition-duration: .25s;
+  }
+
+
+  /* контейнер меню */
+  .menu__box {
+    display: block;
+    position: fixed;
+    visibility: hidden;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    margin-top: 60px;
+    padding-left: 0;
+    list-style: none;
+    text-align: center;
+    background-color: #1976d2;
+    box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
+  }
+  /* элементы меню */
+  .menu__item {
+    display: block;
+    padding: 12px 24px;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .menu__item:hover {
+    background-color: #CFD8DC;
+  }
+
+
+
+
+
   .toolbar{
     flex-wrap: wrap;
     background-color: #1976d2;
     height: 100%;
     display: none;
+    /* here */
   }
-  #toolbarButton{
+  /* #mobile-menu{
     display: block;
+  } */
+  #mobile-toolbar{
+    display: flex;
+    flex-wrap: nowrap;
     background-color: #1976d2;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 60px;
+    width: 100%;
+    justify-content: space-between;
+    place-items: center;
   }
+  /* #toolbar-button{
+    
+  } */
 
   .toolbar .menu{
     flex-wrap: wrap;
@@ -383,6 +508,12 @@ a:hover{
   .menu-item{
     width: 100%;
   }
+  .toolbar ul{
+    margin: 0;
+  }
+  .toolbar li{
+    width: 100%;
+  }
   /* .menu-item{
     width: 252px;
     text-align: center;
@@ -392,4 +523,5 @@ a:hover{
     font-size: 24px;
     line-height: 32px; */
   /* } */
+
 }
