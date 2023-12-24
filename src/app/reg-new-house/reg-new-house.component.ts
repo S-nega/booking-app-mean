@@ -26,16 +26,6 @@ export class RegNewHouseComponent {
     });
   }
   
-  // readURL(event: Event): void {
-  //   if (event.target.files && event.target.files[0]) {
-  //       const file = event.target.files[0];
-  //       const reader = new FileReader();
-  //       reader.onload = e => this.imageSrc = reader.result;
-
-  //       reader.readAsDataURL(file);
-  //   }
-  // }
-  
   onSubmit() {
     console.log('reg-new-house component try to add house');
     if (this.regHouseForm.valid) {
@@ -50,7 +40,6 @@ export class RegNewHouseComponent {
         (error: any) => {
           console.log(houseData);
           console.error('Ошибка при регстрации дома:', error);
-          // Обработайте ошибку, например, показав сообщение об ошибке на фронтенде
         }
       );
     }
