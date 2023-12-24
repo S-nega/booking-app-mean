@@ -37,25 +37,27 @@
 
     <div class="content-item details">
         <div class="details-block period">
-
-            <div class="details-item from">
-                Дата заселения:
-                <br>
-                ../../....
-            </div>
+            <form class="search-form housing" method="post" >
+                <div class="details-item from">
+                    <div class="input-item">
+                        <label for="arrival-day">День заезда</label>
+                        <input type="date" name="arrival-day" id="arrival-day" placeholder="25 марта">    
+                    </div>
+                </div>
+                
+                <div class="details-item to">
+                    <div class="input-item">
+                        <label for="departer-day">День выезда</label>
+                        <input type="date" name="departer-day" id="departer-day" placeholder="25 марта">    
+                    </div>
+                </div>
             
-            <div class="details-item to">
-                Дата выселения:
-                <br>
-                ../../....
-            </div>
-            
-            <div class="details-item nights">
-                Итого:
-                <br>
-                ... ночей
-            </div>
-
+                <div class="details-item nights">
+                    Итого:
+                    <br>
+                    ... ночей
+                </div>
+            </form>
         </div>
 
         <div class="details-block traveller">

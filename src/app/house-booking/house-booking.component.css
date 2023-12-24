@@ -90,6 +90,21 @@
     background-color: #eef2f8;
 }
 
+.details-block .search-form{
+    border: 0;
+    background-color: #fff;
+    margin-top: 0;
+    flex-wrap: wrap;
+    height: auto;
+}
+
+.search-form .input-item{
+    width: auto;
+    margin: 0;
+    padding: 0;
+}
+
+
 @media screen and (max-width: 820px) {
     .content-item{
         flex-wrap: wrap;
@@ -97,7 +112,7 @@
     }
     .contents{
         padding: 8px 8%;
-        margin-top: 160px;
+        margin-top: 140px;
     }
     .offering-block{
         margin-top: 8px;
@@ -107,9 +122,10 @@
     }
 }
 
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 630px) {
     .contents{
         padding: 8px;
+        margin-top: 60px;
     }
 }
 

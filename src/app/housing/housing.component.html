@@ -11,7 +11,20 @@
         <!-- <form [formGroup]="houseSearchForm" (ngSubmit)="onSubmit()" class="search-form housing"> -->
             <div class="input-item">
                 <label for="location">Направление</label>
-                <input type="text" name="location" id="location" placeholder="Куда вы хотите поехать?">
+                <!-- <input type="text" name="location" id="location" list="cityname" placeholder="Куда вы хотите поехать?">
+                <datalist id="cityname">
+                    <option value="Boston">
+                    <option value="Cambridge">
+                </datalist> -->
+                <select name="location" id="location">
+                    <option value="">Please choose an option</option>
+                    <option value="Almaty">Almaty</option>
+                    <option value="Astana">Astana</option>
+                    <option value="Moscow">Moscow</option>
+                    <option value="Piter">Piter</option>
+                    <option value="Paris">Paris</option>
+                    <option value="Rome">Rome</option>
+                  </select>
             </div>
             <!-- ограничить выбор дат -->
             <div class="input-item">
@@ -25,7 +38,7 @@
             <!-- выпадающее меню (максимум 6 взр + 3 ребенка)-->
             <div class="input-item">
                 <label for="passangers">Туристы</label>
-                <input type="text" name="passangers" id="passangers" placeholder="2 взрослых">                
+                <input type="number" name="passangers" id="passangers" placeholder="2">                
             </div>
             <!-- <input class="button" type="submit" [disabled]="houseSearchForm.invalid" value="Найти"> -->
             <input class="button" type="submit" value="Найти">

@@ -62,6 +62,21 @@ h3{
     cursor: pointer;
 }
 
+@media screen and (max-width: 820px) {
+    .contents{
+        padding: 8px 8%;
+        margin-top: 140px;
+    }
+}
+
+@media screen and (max-width: 630px) {
+    .contents{
+        padding: 8px;
+        margin-top: 60px;
+    }
+}
+
+
 @media screen and (max-width: 430px) {
     .contents{
         margin-top: 60px;
@@ -69,5 +84,8 @@ h3{
     }
     .reg-form{
         width: 100%;
+    }
+    .reg-form h3{
+        margin-top: 0;
     }
 }
