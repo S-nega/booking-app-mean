@@ -38,12 +38,12 @@
     </div>
     <!-- выпадающее меню (максимум 6 взр + 3 ребенка)-->
     <div class="input-item">
-      <label for="passangers">Туристы</label>
-      <input
-        type="text"
-        name="passangers"
-        id="passangers"
-        placeholder="2 взрослых"
+      <label for="rooms">Кол-во комнат</label>
+      <input  [(ngModel)] = "numberOfRooms"
+        type="number"
+        name="room"
+        id="room"
+        placeholder="2"
       />
     </div>
     <button class="button" (click)="search()">Найти</button>

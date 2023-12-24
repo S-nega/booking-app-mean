@@ -10,6 +10,7 @@ import { ApiService } from '../service/api.service';
 export class HousingComponent {
   houses: any[] = [];
   searchLocation : string = '';
+  numberOfRooms: number= 0;
   constructor(private apiService: ApiService) {}
   ngOnInit() {
     // console.log('Успешно поприветствовали house')//не проходит при вызове из браузера
@@ -22,7 +23,7 @@ export class HousingComponent {
   }
 
   search(){
-    this.apiService.searchHouses(this.searchLocation ).subscribe((houses: any) => {
+    this.apiService.searchHouses(this.searchLocation, this.numberOfRooms ).subscribe((houses: any) => {
       this.houses = houses.houses;
       console.log('Результаты поиска');
       

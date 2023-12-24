@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
     if (req.file) {
       const uploadedFile = req.file;
       const uniqueFileName = `${Date.now()}_${uploadedFile.originalname}`;
-       imagePath = `public/images/${uniqueFileName}`;
+      imagePath = `public/images/${uniqueFileName}`;
       console.log(imagePath);
       fs.writeFileSync(imagePath, uploadedFile.buffer);
     }
@@ -144,32 +144,39 @@ router.delete('/', async (req, res) => {
   }
 });
 
-// GET-маршрут для поиска домов по location
+// GET-маршрут для поиска домов по location и количеству комнат
 router.get('/search', async (req, res) => {
   try {
-      // Получаем значение location из параметра запроса
-      const location = req.query.location;
-      console.log(location);
-      // Проверяем, передано ли значение location
-      if (!location) {
-          return res.status(400).json({ message: 'Не передан параметр location' });
-      }
+    // Получаем значения location и numberOfRooms из параметров запроса
+    const {location, numberOfRooms} = req.query;
 
-      // Ищем дома по заданному location
-      const houses = await House.find({ location });
+    console.log(location);
+    console.log(numberOfRooms);
 
-      // Проверяем, были ли найдены дома
-      if (!houses || houses.length === 0) {
-          return res.status(404).json({ message: 'Дома не найдены для указанного location' });
-      }
+    // Если не переданы оба параметра, выполняем поиск без учета этих параметров
+    const searchParams = {};
+    if (location) {
+      searchParams.location = location;
+    }
+    if (numberOfRooms) {
+      searchParams.numberOfRooms = numberOfRooms;
+    }
+    // Ищем дома по заданным location и numberOfRooms
+    const houses = await House.find(searchParams);
 
-      // Возвращаем найденные дома в ответе
-      res.status(200).json({ houses });
+    // Проверяем, были ли найдены дома
+    if (!houses || houses.length === 0) {
+      return res.status(404).json({ message: 'Дома не найдены для указанных location и numberOfRooms' });
+    }
+
+    // Возвращаем найденные дома в ответе
+    res.status(200).json({ houses });
   } catch (error) {
-      console.error('Ошибка при поиске домов по location:', error);
-      res.status(500).json({ message: 'Произошла ошибка при поиске домов по location' });
+    console.error('Ошибка при поиске домов по location и numberOfRooms:', error);
+    res.status(500).json({ message: 'Произошла ошибка при поиске домов по location и numberOfRooms' });
   }
 });
+
 
 // GET-маршрут для получения списка уникальных значений location
 router.get('/locations', async (req, res) => {

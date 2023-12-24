@@ -57,11 +57,13 @@ export class ApiService {
     );
   }
 
-  searchHouses(location: string): Observable<any[]> {
-    const params = new HttpParams().set('location', location);
+  searchHouses(location: string, numberOfRooms: number): Observable<any[]> {
+    const params = new HttpParams()
+      .set('location', location)
+      .set('numberOfRooms', numberOfRooms.toString());
+
     return this.http.get<any[]>(`${this.apiUrl}/api/house/search`, { params });
   }
-
   showLocations(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/api/house/locations`);
   }
