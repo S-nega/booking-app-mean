@@ -1,6 +1,7 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { ApiService } from '../service/api.service';
-// import { House } from '../models/house';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+// import { House } from './../../../models/house.js';
 
 @Component({
   selector: 'app-housing',

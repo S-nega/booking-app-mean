@@ -9,7 +9,7 @@ h3{
     width: 100%;
 }
 .reg-form{
-    width: 35%;
+    width: 320px;
     display: flex;
     flex-wrap: wrap;
 }
@@ -60,4 +60,14 @@ h3{
     background-color: #1976d2;
     color: #fff;
     cursor: pointer;
+}
+
+@media screen and (max-width: 430px) {
+    .contents{
+        margin-top: 60px;
+        padding: 20px 16px 0;
+    }
+    .reg-form{
+        width: 100%;
+    }
 }
