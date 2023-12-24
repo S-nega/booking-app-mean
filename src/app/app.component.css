@@ -506,7 +506,8 @@ a:hover{
     margin-left: 0;
   }
   .menu-item{
-    width: 100%;
+    /* width: 100%; */
+    border-bottom: 0px;
   }
   .toolbar ul{
     margin: 0;

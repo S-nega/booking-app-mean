@@ -152,6 +152,17 @@
     color: #333;
 }
 
+#location{
+    width: 100%;
+    border: 0;    
+    outline: none;
+}
+select{
+    width: 100%;
+    border: 0;    
+    outline: none;
+}
+
 @media screen and (max-width: 820px) {
     .content-item{
         flex-wrap: wrap;
@@ -204,12 +215,13 @@
         width: 100%;
     }
     .search-form .button{
-        height: 40px;
+        height: 45px;
         width: 100%;
     }
     .content-list{
         margin-top: 8px;
     }
+    
 }
 
 @media screen and (max-width: 430px) {
