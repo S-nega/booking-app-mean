@@ -5,12 +5,12 @@
 </div>
 
 <div class="contents">
-  <form class="search-form housing" method="post">
-    <!-- <form [formGroup]="house-search-form" (hgSubmit)="onSubmit()"> -->
+  <!-- <form class="search-form housing" method="get"> -->
+    <div class="search-form housing" method="get">
     <!-- изменить стиль при нажатии  -->
     <div class="input-item">
       <label for="location">Направление</label>
-      <input
+      <input [(ngModel)] = "searchLocation"
         type="text"
         name="location"
         id="location"
@@ -46,23 +46,27 @@
         placeholder="2 взрослых"
       />
     </div>
-    <input class="button" type="submit" value="Найти" />
-  </form>
+    <button class="button" (click)="search()">Найти</button>
+  </div>
   <!-- {{houses}} -->
 
   <!-- отображение списка всех доступных вариантов -->
   <!-- <div class="content-list housing">  -->
   <div class="content-list housing">
     <div class="content-item housing" *ngFor="let house of houses">
-      <div class="image-block" *ngIf="house.image">
+      <div class="image-block">
         <!-- Настроить сохранение и отображение изображений -->
-        <img src="http://localhost:8080/{{house.image.replace('public/', '')}}" alt="House Image">
-    </div>
+        <img
+          *ngIf="house.image"
+          src="http://localhost:8080/{{ house.image.replace('public/', '') }}"
+          alt="House Image"
+        />
+      </div>
 
       <div class="info-block">
         <!-- ссылка на страницу с подробробной инфой  -->
         <div class="header-info-block">
-          <a href="#" class="name">{{house.hotelName}}</a>
+          <a href="#" class="name">{{ house.hotelName }}</a>
           <p class="location">
             <!-- Vityzevo -->
             {{ house.location }}
@@ -80,16 +84,16 @@
 
         <div class="buttons-block">
           <p>
-            Номер Garden Deluxe
+            Номер {{ house.houseType }}
             <br />
-            Одна комана, на 2 персоны
+            Кол-во комнат: {{ house.numberOfRooms }}
           </p>
           <!-- переходна подробную инфу об отеле -->
           <!-- <a href="#" onclick="showDopInfo()" id="info-button" class="info-button button">Об отеле</a> -->
           <!-- переход на более подробную инфу и оформление заявки -->
-          <a href="/house-booking" class="order-button button">{{
-            house.dailyCost
-          }}</a>
+          <a href="/house-booking" class="order-button button">
+            {{ house.dailyCost }}</a
+          >
         </div>
         <!-- <div class="dop-info-block">
                         <p>number Type</p>

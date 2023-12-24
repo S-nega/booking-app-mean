@@ -144,5 +144,51 @@ router.delete('/', async (req, res) => {
   }
 });
 
+// GET-маршрут для поиска домов по location
+router.get('/search', async (req, res) => {
+  try {
+      // Получаем значение location из параметра запроса
+      const location = req.query.location;
+      console.log(location);
+      // Проверяем, передано ли значение location
+      if (!location) {
+          return res.status(400).json({ message: 'Не передан параметр location' });
+      }
+
+      // Ищем дома по заданному location
+      const houses = await House.find({ location });
+
+      // Проверяем, были ли найдены дома
+      if (!houses || houses.length === 0) {
+          return res.status(404).json({ message: 'Дома не найдены для указанного location' });
+      }
+
+      // Возвращаем найденные дома в ответе
+      res.status(200).json({ houses });
+  } catch (error) {
+      console.error('Ошибка при поиске домов по location:', error);
+      res.status(500).json({ message: 'Произошла ошибка при поиске домов по location' });
+  }
+});
+
+// GET-маршрут для получения списка уникальных значений location
+router.get('/locations', async (req, res) => {
+  try {
+      // Используем метод distinct для получения уникальных значений location
+      const uniqueLocations = await House.distinct('location');
+
+      // Проверяем, были ли найдены уникальные значения location
+      if (!uniqueLocations || uniqueLocations.length === 0) {
+          return res.status(404).json({ message: 'Уникальные значения location не найдены' });
+      }
+
+      // Возвращаем уникальные значения location в ответе
+      res.status(200).json({ uniqueLocations });
+  } catch (error) {
+      console.error('Ошибка при получении уникальных значений location:', error);
+      res.status(500).json({ message: 'Произошла ошибка при получении уникальных значений location' });
+  }
+});
+
 
 module.exports = router;
