@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const router = require('express').Router();
 const User = require('../models/user');
 const { registerValidation, loginValidation } = require('../validation');
+require('dotenv').config();
 
 router.post("/register", async (req, res) => {
     // console.log(req.body)
