@@ -4,7 +4,6 @@ const House = require('../models/house');
 const fs = require('fs');
 const path = require('path');
 // http://localhost:8080/api/house Адрес маршрутов
-
 // Маршрут для добавления дома с изображением
 router.post('/', async (req, res) => {
   console.log("house controller try to add house");//доходит при вызове через браузер 
@@ -40,7 +39,7 @@ router.post('/', async (req, res) => {
 
     await newHouse.save();
     res.status(201).json({ message: 'Дом успешно добавлен', house: newHouse });
-    res.redirect('/housing'); //не на контроллер а на страницу на компонент
+    // res.redirect('houses'); //отправить на общий список
   } catch (error) {
     console.error('Ошибка добавления дома:', error);
     res.status(500).json({ message: 'Произошла ошибка при добавлении дома' });
@@ -101,7 +100,6 @@ router.put('/:id', async (req, res) => {
     }
     // Возвращаем успешный ответ с обновленной информацией о доме
     res.status(200).json({ message: 'Информация о доме успешно обновлена', house: updatedHouse });
-    res.redirect('/api/housebooking');
   } catch (error) {
     console.error('Ошибка при обновлении информации о доме:', error);
     res.status(500).json({ message: 'Произошла ошибка при обновлении информации о доме' });

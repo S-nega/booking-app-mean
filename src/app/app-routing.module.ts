@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'air-tickets', component: AirTicketsComponent },
   { path: 'car-rental', component: CarRentalComponent },
   { path: 'housing', component: HousingComponent },
-  { path: 'house-booking/:_id', component: HouseBookingComponent },
+  { path: 'house-booking', component: HouseBookingComponent },
 
   { path: 'reg-new-house', component: RegNewHouseComponent },
   { path: 'reg', component: RegistrationComponent },

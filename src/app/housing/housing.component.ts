@@ -20,7 +20,6 @@ export class HousingComponent {
       // const houses = this.apiService.houseFunc();
       this.houses = houses.houses;
       console.log('Успешно поприветствовали house:', houses)
-      
     });
   }
 
