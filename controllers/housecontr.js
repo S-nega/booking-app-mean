@@ -3,9 +3,11 @@ const router = express.Router();
 const House = require('../models/house');
 const fs = require('fs');
 const path = require('path');
+const { verifyToken } = require("../validation");
+
 // http://localhost:8080/api/house Адрес маршрутов
 // Маршрут для добавления дома с изображением
-router.post('/', async (req, res) => {
+router.post('/', verifyToken, async (req, res) => {
   console.log("house controller try to add house");//доходит при вызове через браузер 
   try {
     const { location, hotelName, houseType, numberOfRooms, dailyCost, contactInfo, description } = req.body;
@@ -63,7 +65,7 @@ router.get('/', async (req, res) => {
 });
 
 // Маршрут для обновления информации о доме
-router.put('/:id', async (req, res) => {
+router.put('/:id', verifyToken, async (req, res) => {
   try {
     const { location, hotelName, houseType, numberOfRooms, dailyCost, description, contactInfo } = req.body;
     // Проверяем, что обязательные поля переданы
@@ -106,7 +108,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 // Маршрут для удаления дома
-router.delete('/:id', async (req, res) => {
+router.delete('/:id',verifyToken, async (req, res) => {
   try {
     // Находим и удаляем дом по ID
     const deletedHouse = await House.findByIdAndDelete(req.params.id);
@@ -127,7 +129,7 @@ router.delete('/:id', async (req, res) => {
 });
 
 // Маршрут для удаления всех домов
-router.delete('/', async (req, res) => {
+router.delete('/',verifyToken, async (req, res) => {
   try {
     const houses = await House.find({});
 
