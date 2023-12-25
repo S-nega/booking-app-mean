@@ -16,13 +16,13 @@ export class RegNewHouseComponent {
     private apiService: ApiService
   ) {
     this.regHouseForm = this.formBuilder.group({
-      location: [''],
-      hotelName: [''],
-      houseType: [''],
-      numberOfRooms: [''],
-      dailyCost: [''],
-      description: [''],
-      contactInfo: [''],
+      location: ['', ],
+      hotelName: ['',],
+      houseType: ['',],
+      numberOfRooms: ['',],
+      dailyCost: ['', ],
+      description: ['',],
+      contactInfo: ['',],
     });
   }
   
