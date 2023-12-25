@@ -5,7 +5,6 @@
     </div>
 
     <div class="contents">
-
         <form class="search-form housing" method="post" >
         <!-- <form [formGroup]="houseSearchForm" (ngSubmit)="onSubmit()" class="search-form housing"> -->
             <div class="input-item">
@@ -15,7 +14,9 @@
                     <option value="Boston">
                     <option value="Cambridge">
                 </datalist> -->
-                <select name="location" id="location">
+                <select [(ngModel)] = "searchLocation" 
+                  name="location" 
+                  id="location">
                     <option value="">Please choose an option</option>
                     <option value="Almaty">Almaty</option>
                     <option value="Astana">Astana</option>
@@ -23,133 +24,79 @@
                     <option value="Piter">Piter</option>
                     <option value="Paris">Paris</option>
                     <option value="Rome">Rome</option>
-                  </select>
+                </select>
             </div>
             <!-- ограничить выбор дат -->
             <div class="input-item">
                 <label for="arrival-day">День заезда</label>
-                <input type="date" name="arrival-day" id="arrival-day" placeholder="25 марта">    
+                <input 
+                  type="date" 
+                  name="arrival-day" 
+                  id="arrival-day" 
+                  placeholder="25 марта">    
             </div>
             <div class="input-item">
                 <label for="departer-day">День выезда</label>
-                <input type="date" name="departer-day" id="departer-day" placeholder="25 марта">    
+                <input 
+                  type="date" 
+                  name="departer-day" 
+                  id="departer-day" 
+                  placeholder="25 марта">    
             </div>
             <!-- выпадающее меню (максимум 6 взр + 3 ребенка)-->
             <div class="input-item">
-                <label for="passangers">Туристы</label>
-                <input type="number" name="passangers" id="passangers" placeholder="2">                
+                <label for="passangers">Комнаты</label>
+                <input [(ngModel)] = "numberOfRooms" 
+                  type="number" 
+                  name="passangers" 
+                  id="passangers" 
+                  placeholder="1">                
             </div>
             <!-- <input class="button" type="submit" [disabled]="houseSearchForm.invalid" value="Найти"> -->
-            <input class="button" type="submit" value="Найти">
+            <input class="button" type="submit" (click)="search()" value="Найти">
         </form>
 
-        <!-- {{housesList}} приходит пустая -->
-        <!-- {{houses}} не видит такую переменную -->
+        <!-- отображение списка всех доступных вариантов -->
+        <div class="content-list housing">
+          <div class="content-item housing" *ngFor="let house of houses">
+            <div class="image-block">
+              <!-- Настроить сохранение и отображение изображений -->
+              <img
+                *ngIf="house.image"
+                src="http://localhost:8080/{{ house.image.replace('public/', '') }}"
+                alt="House Image"
+              />
+            </div>
 
-<div class="contents">
-  <!-- <form class="search-form housing" method="get"> -->
-    <div class="search-form housing" method="get">
-    <!-- изменить стиль при нажатии  -->
-    <div class="input-item">
-      <label for="location">Направление</label>
-      <input [(ngModel)] = "searchLocation"
-        type="text"
-        name="location"
-        id="location"
-        placeholder="Куда вы хотите поехать?"
-      />
-    </div>
-    <!-- ограничить выбор дат -->
-    <div class="input-item">
-      <label for="arrival-day">День заезда</label>
-      <input
-        type="date"
-        name="arrival-day"
-        id="arrival-day"
-        placeholder="25 марта"
-      />
-    </div>
-    <div class="input-item">
-      <label for="arrival-day">День выезда</label>
-      <input
-        type="date"
-        name="departer-day"
-        id="departer-day"
-        placeholder="25 марта"
-      />
-    </div>
-    <!-- выпадающее меню (максимум 6 взр + 3 ребенка)-->
-    <div class="input-item">
-      <label for="rooms">Кол-во комнат</label>
-      <input  [(ngModel)] = "numberOfRooms"
-        type="number"
-        name="room"
-        id="room"
-        placeholder="2"
-      />
-    </div>
-    <button class="button" (click)="search()">Найти</button>
-  </div>
-  <!-- {{houses}} -->
+            <div class="info-block">
+              <!-- ссылка на страницу бронирования  -->
+              <div class="header-info-block">
+                <a href="/house-booking" class="name">{{ house.hotelName }}</a>
+                <p class="location">
+                  {{ house.location }}
+                </p>
+              </div>
 
-  <!-- отображение списка всех доступных вариантов -->
-  <!-- <div class="content-list housing">  -->
-  <div class="content-list housing">
-    <div class="content-item housing" *ngFor="let house of houses">
-      <div class="image-block">
-        <!-- Настроить сохранение и отображение изображений -->
-        <img
-          *ngIf="house.image"
-          src="http://localhost:8080/{{ house.image.replace('public/', '') }}"
-          alt="House Image"
-        />
+              <div class="description-block">
+                <p class="description">
+                  {{ house.description }}
+                </p>
+              </div>
+
+              <div class="buttons-block">
+                <p>
+                  Номер {{ house.houseType }}
+                  <br />
+                  Кол-во комнат: {{ house.numberOfRooms }}
+                </p>
+                <a href="/house-booking/{{house._id}}" class="order-button button">
+                  {{house._id}}
+                {{ house.dailyCost }} KZT</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div class="info-block">
-        <!-- ссылка на страницу с подробробной инфой  -->
-        <div class="header-info-block">
-          <a href="/house-booking" class="name">{{ house.hotelName }}</a>
-          <p class="location">
-            <!-- Vityzevo -->
-            {{ house.location }}
-          </p>
-        </div>
-
-        <div class="description-block">
-          <p class="description">
-            <!-- Гостевой дом У моря siesta находится в Витязево. 
-                            Этот гостевой дом располагается в пешей доступности от центра города. 
-                            Рядом с гостевым домом — пляж «Кавказ», пляж «Жемчужина» и пляж «Одиссея». -->
-            {{ house.description }}
-          </p>
-        </div>
-
-        <div class="buttons-block">
-          <p>
-            Номер {{ house.houseType }}
-            <br />
-            Кол-во комнат: {{ house.numberOfRooms }}
-          </p>
-          <!-- переходна подробную инфу об отеле -->
-          <!-- <a href="#" onclick="showDopInfo()" id="info-button" class="info-button button">Об отеле</a> -->
-          <!-- переход на более подробную инфу и оформление заявки -->
-          <a href="/house-booking" class="order-button button">
-            {{ house.dailyCost }}</a
-          >
-        </div>
-        <!-- <div class="dop-info-block">
-                        <p>number Type</p>
-                        <p>number of rooms</p>
-                    </div> -->
-        <!-- {{data.location}}
-                    {{data.hotelName}}
-                    {{data.houseType}}
-                    {{data.numberOfRooms}}
-                    {{data.daylyCost * }}
-                    {{data.daylyCost}} -->
-      </div>
-    </div>
-  </div>
-</div>
 
     <div class="footer"></div>
