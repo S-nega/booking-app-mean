@@ -1,5 +1,5 @@
 <div class="contents">
-    <form [formGroup]="regHouseForm" (ngSubmit)="onSubmit()" class="reg-form">
+    <form [formGroup]="regHouseForm" (ngSubmit)="onSubmit()" class="reg-form" enctype="multipart/form-data">
         <h3>Добавление нового объекта размещения</h3>
         <div class="hotelName reg-element"> 
             <label for="hotelName">Название отеля</label>
@@ -31,7 +31,7 @@
         </div>
         <div class="image reg-element">
             <label for="image">Добавьте фотографию номера</label>
-            <input type="file" id="image" name="image"/>
+            <input type="file" id="image" name="image" (change)="onImageSelected($event)"/>
         </div>
         <button class="button" type="submit" [disabled]="regHouseForm.invalid"> reg</button>
 

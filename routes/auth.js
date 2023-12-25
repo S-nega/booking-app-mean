@@ -26,10 +26,10 @@ router.post("/register", async (req, res) => {
 
     //create user o bject and save it in Mongo (via try-catch)
     const user = new User({
-        firstName ,
-        lastName ,
-        email ,
-        password ,
+        firstName,
+        lastName,
+        email,
+        password,
         isAdmin
     });
 

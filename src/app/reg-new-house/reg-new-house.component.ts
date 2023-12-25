@@ -9,7 +9,7 @@ import { ApiService } from '../service/api.service';
 })
 export class RegNewHouseComponent {
   regHouseForm: FormGroup;
-  // imageSrc: string;
+  selectedImage: File | null = null; // Установим начальное значение
 
   constructor(
     private formBuilder: FormBuilder,
@@ -23,23 +23,33 @@ export class RegNewHouseComponent {
       dailyCost: [''],
       description: [''],
       contactInfo: [''],
+      image: []
     });
   }
-  
+
+  onImageSelected(event: any) {
+    const imageFile = event.target.files[0];
+    this.selectedImage = imageFile;
+    this.regHouseForm.get('image')?.setValue(imageFile);
+  }
+
   onSubmit() {
     console.log('reg-new-house component try to add house');
     if (this.regHouseForm.valid) {
-
       const houseData = this.regHouseForm.value;
 
-      this.apiService.regNewHouseFunc(houseData).subscribe(
+      const formData = new FormData();
+      Object.keys(houseData).forEach(key => {
+        formData.append(key, houseData[key]);
+      });
+
+      this.apiService.regNewHouseFunc(formData).subscribe(
         () => {
           console.log('Дом успешно зарегистрирован:');
           // Вы можете выполнить дополнительные действия после успешной регистрации
         },
         (error: any) => {
-          console.log(houseData);
-          console.error('Ошибка при регстрации дома:', error);
+          console.error('Ошибка при регистрации дома:', error);
         }
       );
     }
