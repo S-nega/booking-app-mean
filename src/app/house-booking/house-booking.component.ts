@@ -13,6 +13,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class HouseBookingComponent {
   bookForm: FormGroup;
   userId: string;
+  house: any;
+  id: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -27,6 +29,15 @@ export class HouseBookingComponent {
       userId:[this.userId]
     });
     
+  }
+
+  onInit(){
+    this.apiService.getHouse(this.id).subscribe((house: any) => {
+      // const houses = this.apiService.houseFunc();
+      this.house = house;
+      console.log('open', house)
+      
+    });
   }
 
   onSubmit() {

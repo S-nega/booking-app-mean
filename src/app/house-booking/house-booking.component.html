@@ -3,32 +3,36 @@
 
         <div class="image-block">
         <!-- Настроить сохранение и отображение изображений -->
-        <!-- <img src="" > -->    
+            <img class="image-block"
+                *ngIf="house.image"
+                src="public/images/les.jpg"
+                alt="House Image"
+            />    
         </div> 
 
         <div class="info-block">
             <!-- ссылка на страницу с подробробной инфой  -->
             <div class="header-info-block">
-                <a href="#" class="name">Гостевой Дом У Моря Siesta</a>
+                <a href="#" class="name">hotel 3*</a>
                 <p class="location">
-                    Vityzevo
-                    <!-- {{houses.location}} -->
+                    Astana
+                    <!-- {{house.location}} -->
                 </p>
             </div>
 
             <div class="description-block">
                 <p class="description">
-                    Гостевой дом У моря siesta находится в Витязево. 
-                    Этот гостевой дом располагается в пешей доступности от центра города. 
-                    Рядом с гостевым домом — пляж «Кавказ», пляж «Жемчужина» и пляж «Одиссея».
+                    <!-- {{house.location}} -->
+                    description
                 </p>
             </div>
 
             <div class="buttons-block">
                 <p>
-                    Номер Garden Deluxe
+                    <!-- {{house.houseType}} -->
+                    standart
                     <br>
-                    Одна комната, на 2 персоны
+                    Количество комнат: 1
                 </p>
             </div>
         </div>
@@ -55,7 +59,7 @@
                 <div class="details-item nights">
                     Итого:
                     <br>
-                    ... ночей
+                    3 ночей
                 </div>
             </form>
         </div>
@@ -79,12 +83,13 @@
             <div class="details-item daily-cost">
                 Daily Cost:
                 <br>
-                12000
+                1231
+                <!-- {{house.dailyCost}} -->
             </div>
             <div class="details-item final-cost">
                 Final Cost:
                 <br>
-                36000
+                3693
             </div>
         </div>
     </div>
