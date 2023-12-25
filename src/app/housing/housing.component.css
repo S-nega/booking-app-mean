@@ -88,8 +88,12 @@
     width: 200px;
     height: 200px;
     position: absolute;
-    background-color: #1976d2;
+    background-color: #9abee1;
     border-radius: 10px;
+}
+.image-block img{
+    margin: 0;
+    object-fit: cover;
 }
 
 .info-block{
