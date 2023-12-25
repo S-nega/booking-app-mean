@@ -56,12 +56,13 @@
             <input class="button" type="submit" (click)="search()" value="Найти">
         </form>
 
+
         <!-- отображение списка всех доступных вариантов -->
         <div class="content-list housing">
           <div class="content-item housing" *ngFor="let house of houses">
             <div class="image-block">
               <!-- Настроить сохранение и отображение изображений -->
-              <img
+              <img class="image-block"
                 *ngIf="house.image"
                 src="http://localhost:8080/{{ house.image.replace('public/', '') }}"
                 alt="House Image"
