@@ -12,7 +12,7 @@
             <input type="password" id="password" name="password" formControlName="password" required>
         </div>
 
-        <input class="button" type="submit" value="Войти">
+        <input class="button" type="submit" [disabled]="authorizationForm.invalid" value="Войти">
         
         <div class="reg-links"> 
             <a href="/reg#reg">Регистрация</a>

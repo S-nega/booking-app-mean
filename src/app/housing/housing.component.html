@@ -94,12 +94,11 @@
                   <br />
                   Кол-во комнат: {{ house.numberOfRooms }}
                 </p>
-                <!-- переходна подробную инфу об отеле -->
-                <!-- <a href="#" onclick="showDopInfo()" id="info-button" class="info-button button">Об отеле</a> -->
-                <!-- переход на более подробную инфу и оформление заявки -->
-                <a href="/house-booking" class="order-button button">
-                  {{ house.dailyCost }} KZT</a
-                >
+                <!-- <a *ngIf="{{authenticatedUser}}" href="/edit-house/{{house._id}}" class="order-button button"> Edit </a>
+                <a *ngIf="{{authenticatedUser}}" href="/house-booking/{{house._id}}" class="order-button button">  -->
+                <a href="/house-booking/{{house._id}}" class="order-button button">
+                  {{ house.dailyCost }} KZT
+                </a>
               </div>
               <!-- <div class="dop-info-block">
                               <p>number Type</p>
