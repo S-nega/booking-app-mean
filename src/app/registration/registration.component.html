@@ -1,26 +1,35 @@
-
 <div class="contents">
-    <form class="reg-form">
+    <form class="reg-form" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
         <h3>Регистрация</h3>
+        
         <div class="name reg-element"> 
-            <label for="name">Ваше имя</label>
-            <input type="text" id="name" name="name" placeholder="Name">
+            <label for="firstName">Ваше имя</label>
+            <input type="text" id="firstName" name="firstName" placeholder="Имя" formControlName="firstName" required>
         </div>
+        
         <div class="surname reg-element"> 
-            <label for="surname">Ваша фамилия</label>
-            <input type="text" id="surname" name="surname" placeholder="Surname">
+            <label for="lastName">Ваша фамилия</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Фамилия" formControlName="lastName" required>
         </div>
+        
         <div class="email reg-element"> 
             <label for="email">Ваш e-mail</label>
-            <input type="email" id="email" name="email" placeholder="example@mail.com">
+            <input type="email" id="email" name="email" placeholder="example@mail.com" formControlName="email" required>
         </div>
+        
         <div class="password reg-element">
             <label for="password">Придумайте пароль</label>
-            <input type="password" id="password" name="password">
+            <input type="password" id="password" name="password" formControlName="password" required>
         </div>
-        <div class="reppas reg-element">
+        
+        <!-- <div class="reppas reg-element">
             <label for="reppas">Повторите пароль</label>
-            <input type="password" id="reppas" name="reppas">
+            <input type="password" id="reppas" name="reppas" formControlName="reppas" required>
+        </div> -->
+
+        <div class="isAdmin reg-element">
+            <label for="isAdmin">Администратор</label>
+            <input type="checkbox" id="isAdmin" name="isAdmin" formControlName="isAdmin">
         </div>
 
         <input class="button" type="submit" value="Зарегистрироваться">
@@ -29,5 +38,4 @@
             <a href="/auth#auth">Авторизация</a>
         </div>
     </form>
-
 </div>

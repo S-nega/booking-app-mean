@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
   private apiUrl = 'http://localhost:8080';
+  private userId = '';
+
   constructor(private http: HttpClient) {}
 
   houseFunc() {
@@ -66,5 +68,23 @@ export class ApiService {
   }
   showLocations(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/api/house/locations`);
+  }
+
+  //Auth
+
+  setUserId(userId: string): void {
+    this.userId = userId;
+  }
+  getUserId(): string {
+    return this.userId;
+  }
+
+  authorizeUser(authorizationData: any): Observable<any> {
+    const url = `${this.apiUrl}/api/user/login`;
+    return this.http.post(url, authorizationData);
+  }
+  registerUser(registrationData: any): Observable<any> {
+    const url = `${this.apiUrl}/api/user/register`;
+    return this.http.post(url, registrationData);
   }
 }

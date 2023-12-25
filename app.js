@@ -20,11 +20,15 @@ const indexRouter = require('./routes/index');
 const bookingRouter = require('./routes/booking');
 const houseRouter = require('./controllers/housecontr')
 const houseBookRouter = require('./controllers/housebookcontr')
+const authRoutes = require("./routes/auth");
+
 // app.use('/index', indexRouter);
 // app.use('/', bookingRouter);
 // app.use('/', houseRouter);
 app.use('/api/house', houseRouter);
 app.use('/api/housebooking', houseBookRouter);
+app.use("/api/user", authRoutes); //authentication routes (register, login)
+
 
 module.exports = app;
 //LlL2o4iyDHNYPckW
