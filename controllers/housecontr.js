@@ -40,7 +40,7 @@ router.post('/', async (req, res) => {
 
     await newHouse.save();
     res.status(201).json({ message: 'Дом успешно добавлен', house: newHouse });
-    // res.redirect('/housing'); //не на контроллер а на страницу на компонент
+    // res.redirect('/housing', {house: newHouse }); //не на контроллер а на страницу на компонент
   } catch (error) {
     console.error('Ошибка добавления дома:', error);
     res.status(500).json({ message: 'Произошла ошибка при добавлении дома' });

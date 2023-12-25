@@ -90,10 +90,11 @@
                   <br />
                   Кол-во комнат: {{ house.numberOfRooms }}
                 </p>
+                <!-- <a *ngIf="{{authenticatedUser}}" href="/edit-house/{{house._id}}" class="order-button button"> Edit </a>
+                <a *ngIf="{{authenticatedUser}}" href="/house-booking/{{house._id}}" class="order-button button">  -->
                 <a href="/house-booking/{{house._id}}" class="order-button button">
-                  {{house._id}}
-                {{ house.dailyCost }} KZT</a
-                >
+                  {{ house.dailyCost }} KZT
+                </a>
               </div>
             </div>
           </div>

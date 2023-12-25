@@ -8,6 +8,7 @@ import { AuthorizationComponent } from './authorization/authorization.component'
 import { RegNewHouseComponent } from './reg-new-house/reg-new-house.component';
 import { UserComponent } from './user/user.component';
 import { HouseBookingComponent } from './house-booking/house-booking.component';
+import { EditHouseComponent } from './edit-house/edit-house.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/housing', pathMatch: 'full' }, // Перенаправление на маршрут "housing" при загрузке приложения
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'car-rental', component: CarRentalComponent },
   { path: 'housing', component: HousingComponent },
   { path: 'house-booking/:_id', component: HouseBookingComponent },
+  { path: 'edit-house/:_id', component: EditHouseComponent },
 
   { path: 'reg-new-house', component: RegNewHouseComponent },
   { path: 'reg', component: RegistrationComponent },

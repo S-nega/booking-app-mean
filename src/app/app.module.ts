@@ -13,6 +13,7 @@ import { AuthorizationComponent } from './authorization/authorization.component'
 import { RegNewHouseComponent } from './reg-new-house/reg-new-house.component';
 import { UserComponent } from './user/user.component';
 import { HouseBookingComponent } from './house-booking/house-booking.component';
+import { EditHouseComponent } from './edit-house/edit-house.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { HouseBookingComponent } from './house-booking/house-booking.component';
     RegNewHouseComponent,
     UserComponent,
     HouseBookingComponent,
+    EditHouseComponent,
   ],
   imports: [
     BrowserModule,
